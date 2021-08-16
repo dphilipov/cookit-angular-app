@@ -9,8 +9,14 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
+button {
+    cursor: pointer;
+}
+
 .main-wrapper {
     max-width: 1024px;
     min-height: calc(100vh - 200px);
     margin: 0 auto;
 }
+
+
