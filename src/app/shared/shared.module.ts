@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button/button.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 
-import {MatButtonModule} from '@angular/material/button'; 
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card'; 
+import { CardComponent } from './card/card.component'; 
 
 @NgModule({
   declarations: [
     ButtonComponent,
-    SearchBarComponent
+    CardComponent,
   ],
   imports: [
     CommonModule,
     MatButtonModule,
+    MatCardModule
   ],
   exports: [
     ButtonComponent,
-    SearchBarComponent
+    CardComponent
   ]
 })
 export class SharedModule { }

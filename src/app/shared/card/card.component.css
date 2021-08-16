@@ -1,0 +1,23 @@
+.card-container {
+    width: 23%;
+    /* [theme.breakpoints.down('md')]: {
+        width: 'calc(33% - 10px)'
+    },
+    [theme.breakpoints.down('sm')]: {
+        width: 'calc(50% - 10px)'
+    },
+    [theme.breakpoints.down('xs')]: {
+        width: '100%'
+    }, */
+}
+
+.card-actions-container {
+    justify-content: space-between;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.add-to-shopping-list-btn {
+    padding-left: 0;
+    padding-right: 0;
+}
