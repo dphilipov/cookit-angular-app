@@ -15,8 +15,6 @@ export class AuthServicesService {
   }
 
   loginUser(email: string, password: string) {
-    console.log("Great Success");
-
     return appwrite.account.createSession(email, password)
   }
 
