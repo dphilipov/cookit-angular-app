@@ -11,6 +11,11 @@
     }, */
 }
 
+.recipeImg {
+    height: 140px;
+    object-fit: cover;
+}
+
 .card-actions-container {
     justify-content: space-between;
     padding-left: 0;
@@ -20,4 +25,13 @@
 .add-to-shopping-list-btn {
     padding-left: 0;
     padding-right: 0;
+    background-color: #000;
+}
+
+.add-to-shopping-list-btn:hover {
+    background-color: #FF6961;
+}
+
+.add-to-shopping-list-icon {
+    color: #FFF;
 }

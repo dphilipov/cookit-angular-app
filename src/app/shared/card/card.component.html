@@ -1,68 +1,23 @@
-<mat-card class="card-container">
+<mat-card>
 
     <a href="/recipes/${id}">
-        <img mat-card-image
-            alt="CHANGE ME"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.bpimaging.com%2Fassets%2Fuploads%2F2019%2F03%2F1_food_grouping-1024x560.jpg&f=1&nofb=1"
-        />
+        <img mat-card-image class="recipeImg" [alt]="fetchedMeal.name" [src]="imagePreview" />
     </a>
 
-    <mat-card-title>Test Food</mat-card-title>
+    <mat-card-title>{{fetchedMeal.name}}</mat-card-title>
 
     <mat-card-content>
         <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
+            {{fetchedMeal.description}}
         </p>
-      </mat-card-content>
+    </mat-card-content>
 
-      <mat-card-actions>
+    <mat-card-actions>
         <app-button btnType="basic" btnText="READ FULL RECIPE"></app-button>
-      </mat-card-actions>
-    <!-- <CardActionArea>
-        <CardContent>
-            <Typography
-                gutterBottom
-                variant="h6"
-                component="h2"
-            >
-                {name}
-            </Typography>
 
-            <Typography
-                gutterBottom
-                variant="body2"
-                color="textSecondary"
-                component="p"
-            >
-                {description}
-            </Typography>
-
-            <CardActions className={materialStyle.cardActionsContainer}>
-                <Button
-                    className={materialStyle.addToShoppingListBtn}
-                    href={`/recipes/${id}`}
-                    size="small"
-                    color="secondary"
-                >
-                    Read full recipe
-                </Button>
-
-                <AddCircleIcon
-                    fontSize="large"
-                    onClick={(e) => addToShoppingListHandler(e, ingredients)}
-                />
-            </CardActions>
-
-            <Chip label="Clickable Link" component="a" href="#chip" size="small" clickable />
-            <Chip label="Clickable " component="a" href="#chip" size="small" clickable />
-            <Chip label="ink" component="a" href="#chip" size="small" clickable />
-            <Chip label="nk" component="a" href="#chip" size="small" clickable />
-            <Chip label="ink" component="a" href="#chip" size="small" clickable />
-
-        </CardContent>
-    </CardActionArea> -->
-
+        <button mat-mini-fab class="add-to-shopping-list-btn">
+            <mat-icon class="add-to-shopping-list-icon">add</mat-icon>
+        </button>
+    </mat-card-actions>
 
 </mat-card>

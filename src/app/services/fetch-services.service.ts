@@ -3,7 +3,7 @@ import appwrite from '../config/appwrite'
 
 import {environment} from '../../environments/environment';
 import { IRecipe } from '../shared/interfaces/recipe';
-const collectionTOKEN = environment.apiURL;
+const COLLECTION_KEY = environment.COLLECTION_KEY;
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +16,17 @@ export class FetchServicesService {
 
 
   getAll() {
-    return appwrite.database.listDocuments(collectionTOKEN);
+    return appwrite.database.listDocuments(COLLECTION_KEY);
   }
 
   getOne(id: string) {
-    return appwrite.database.getDocument(collectionTOKEN, id);
+    return appwrite.database.getDocument(COLLECTION_KEY, id);
   }
 
   createOne(data: IRecipe) {
     data ? JSON.stringify(data) : null;
 
-    return appwrite.database.createDocument(collectionTOKEN, data, ['*'], ['*']);
+    return appwrite.database.createDocument(COLLECTION_KEY, data, ['*'], ['*']);
   }
 
   uploadImage(data: any) {

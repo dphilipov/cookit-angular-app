@@ -7,10 +7,17 @@ import { FetchServicesService } from 'src/app/services/fetch-services.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  fetchedMeals = [];
 
-  constructor(fetchServices: FetchServicesService) { }
+  constructor(private fetchServices: FetchServicesService) { 
+
+  }
 
   ngOnInit(): void {
+    this.fetchServices.getAll()
+    .then((res: any) => {
+      this.fetchedMeals = res.documents;
+    });
   }
 
 }
