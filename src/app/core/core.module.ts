@@ -8,6 +8,9 @@ import { SharedModule } from '../shared/shared.module';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     MainComponent,
     LoginComponent,
+    RegisterComponent,
+    CreateComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
     MatInputModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,

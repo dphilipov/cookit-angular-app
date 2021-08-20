@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthServicesService } from './services/auth-services.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { AuthServicesService } from './services/auth-services.service';
     BrowserModule,
     CoreModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
