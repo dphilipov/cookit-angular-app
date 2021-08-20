@@ -1,10 +1,11 @@
 export interface IRecipe {
     name: string;
     description: string;
-    ingredients: {
+    ingredients?: {
         ingredient: string;
         quantity: number;
         measurements: string;
     }[];
-    imageId: any;
+    directions: string;
+    imageId: string;
 }

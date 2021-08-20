@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateComponent } from './create/create.component';
     SharedModule,
     RouterModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    NgxDropzoneModule
   ],
   exports: [
     HeaderComponent,

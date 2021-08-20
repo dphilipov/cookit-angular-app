@@ -1,0 +1,49 @@
+.create-container {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+.create-form-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.dropzone-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex: 1;
+    border-radius: 4px;
+    aspect-ratio: 1/1;
+    align-self: start;
+    cursor: pointer;
+    border: 1px solid #C4C4C4;
+}
+
+.dropzone-container:hover {
+    border: 1px solid #212121;
+}
+
+.dropzone-icon {
+    font-size: 100px;
+    color: #f1f1f1;
+}
+
+.add-ingredient {
+    align-self: center;
+    border: 1px dashed #c4c4c4;
+    width: 100%;
+    padding: 10px 0;
+    color: #c4c4c4;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-ingredient:hover {
+    border: 1px dashed #212121;
+    color: #212121;
+}

@@ -1,1 +1,68 @@
-<p>create works!</p>
+<div class="main-wrapper">
+    <h3>Add a recipe</h3>
+
+    <div class="create-container">
+        <!-- <div
+            {...getRootProps()}
+            className={dropzoneContainer}
+        >
+            <input {...getInputProps()} />
+            <ImageIcon className={dropzoneIcon}></ImageIcon>
+            <Typography
+                gutterBottom variant="body2"
+                color="textSecondary"
+                component="p"
+            >
+                Drag 'n' drop a recipe image
+            </Typography>
+        </div> -->
+
+        <form #form="ngForm" class="create-form-container" (ngSubmit)="submitRecipeHandler(form)">
+
+            <ngx-dropzone (change)="onSelect($event)" accept="image/*" [multiple]="false">
+                <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+                </ngx-dropzone-image-preview>
+            </ngx-dropzone>
+
+            <mat-form-field appearance="outline">
+                <mat-label for="recipeName">Recipe Name</mat-label>
+                <input matInput ngModel name="recipeName">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label for="recipeDescription">Recipe Description</mat-label>
+                <textarea matInput ngModel name="recipeDescription"></textarea>
+            </mat-form-field>
+
+
+
+            <!-- {recipeIngredients.map((recipe, i) => (
+                <IngredientsInput key={i} onChange={(value) => {
+                    let arr = recipeIngredients;
+                    arr[i] = {
+                        ingredient: value.input,
+                        quantity: value.quantity,
+                        measurement: value.measurement
+                    };
+                    setRecipeIngredients([...arr])
+                }} />
+            ))}
+
+            <AddCircleIcon
+                onClick={(e) => addIngredientsFieldHandler(e)}
+                className={addIngredient}
+            /> -->
+
+            <mat-form-field appearance="outline">
+                <mat-label for="recipeDirections">Directions</mat-label>
+                <textarea matInput ngModel name="recipeDirections"></textarea>
+            </mat-form-field>
+
+            <app-button btnClass="nav-btn" btnType="stroked" btnText="CREATE">
+                SUBMIT
+            </app-button>
+
+        </form>
+    </div>
+</div>
