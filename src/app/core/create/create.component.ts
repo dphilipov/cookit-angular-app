@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
+import { IIngredient } from 'src/app/shared/interfaces/ingredients';
 import { IRecipe } from 'src/app/shared/interfaces/recipe';
 
 @Component({
@@ -14,25 +15,50 @@ export class CreateComponent {
   recipe: IRecipe = {
     name: '',
     description: '',
+    ingredients: [],
     directions: '',
     imageId: ''
   }
   recipeImage: any;
+  recipeIngredientsLength = [{}];
+  recipeIngredients = [
+    {
+      mealIngredients: '',
+      ingredientsQuantity: 0,
+      ingredientsMeasurement: ''
+    }
+  ];
 
   constructor(private fetchServices: FetchServicesService, private router: Router) {
 
   }
 
-  onSelect(event: any) {
+  setRecipeIngredients(event: IIngredient): void {
+    const {mealIngredients, ingredientsQuantity, ingredientsMeasurement} = event;
+    this.recipeIngredients[event.index] = {mealIngredients, ingredientsQuantity, ingredientsMeasurement};
+  }
+
+  onSelect(event: any): void {
     this.recipeImage = event.addedFiles[0];
     this.files = [];
     this.files.push(this.recipeImage);
+  }
 
+  addIngredientsFieldHandler(event: MouseEvent): void {
+    event.preventDefault();
+
+    this.recipeIngredientsLength.push({});
+    this.recipeIngredients.push({
+      mealIngredients: '',
+      ingredientsQuantity: 0,
+      ingredientsMeasurement: ''
+    });
   }
 
   submitRecipeHandler(form: any): void {
     this.recipe.name = form.form.controls.recipeName.value;
     this.recipe.description = form.form.controls.recipeDescription.value;
+    this.recipe.ingredients = this.recipeIngredients;
     this.recipe.directions = form.form.controls.recipeDirections.value;
 
     this.fetchServices.uploadImage(this.recipeImage)

@@ -35,24 +35,9 @@
                 <textarea matInput ngModel name="recipeDescription"></textarea>
             </mat-form-field>
 
+            <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i" (setRecipeIngredients)="setRecipeIngredients($event)"></app-ingredients-input>
 
-
-            <!-- {recipeIngredients.map((recipe, i) => (
-                <IngredientsInput key={i} onChange={(value) => {
-                    let arr = recipeIngredients;
-                    arr[i] = {
-                        ingredient: value.input,
-                        quantity: value.quantity,
-                        measurement: value.measurement
-                    };
-                    setRecipeIngredients([...arr])
-                }} />
-            ))}
-
-            <AddCircleIcon
-                onClick={(e) => addIngredientsFieldHandler(e)}
-                className={addIngredient}
-            /> -->
+            <button (click)="addIngredientsFieldHandler($event)" class="addIngredient">add ingredient</button>
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeDirections">Directions</mat-label>

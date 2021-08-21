@@ -1,0 +1,21 @@
+<div class="ingredients-input-container">
+
+
+    <mat-form-field appearance="outline" class="ingredients-input-text">
+        <mat-label for="mealIngredients">Ingredient</mat-label>
+        <input type="text" matInput ngModel name="mealIngredients" #mealIngredients (keyup)="handleIngredientsChange(mealIngredients)">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="ingredients-input-text">
+        <mat-label for="ingredientsQuantity">Quantity</mat-label>
+        <input type="number" matInput ngModel name="ingredientsQuantity" #ingredientsQuantity (keyup)="handleIngredientsChange(ingredientsQuantity)" (change)="handleIngredientsChange(ingredientsQuantity)">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="ingredients-input-text">
+        <mat-label for="ingredientsMeasurement">Quantity</mat-label>
+        <mat-select ngModel name="ingredientsMeasurement" #ingredientsMeasurement (focus)="handleIngredientsChange(ingredientsMeasurement)">
+            <mat-option *ngFor="let option of options" [value]="option.value">{{option.label}}</mat-option>
+          </mat-select>
+    </mat-form-field>
+
+</div>
