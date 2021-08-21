@@ -20,7 +20,7 @@
         <form #form="ngForm" class="create-form-container" (ngSubmit)="submitRecipeHandler(form)">
 
             <ngx-dropzone (change)="onSelect($event)" accept="image/*" [multiple]="false">
-                <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+                <ngx-dropzone-label>Drag & drop a recipe image</ngx-dropzone-label>
                 <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
                 </ngx-dropzone-image-preview>
             </ngx-dropzone>
