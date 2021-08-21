@@ -1,7 +1,7 @@
 <div class="main-wrapper">
     <h3>Login Info</h3>
 
-    <form class="login-form">
+    <form #form="ngForm" (ngSubmit)="loginHandler(form)" class="login-form">
 
         <label for="email">Email:</label>
         <input
@@ -9,6 +9,7 @@
             name="email"
             id="email"
             placeholder="Enter your email adress"
+            ngModel
         />
 
         <label for="password">Password:</label>
@@ -17,8 +18,9 @@
             name="password"
             id="password"
             placeholder="Enter your password"
+            ngModel
         />
 
-        <!-- <input onClick={(event) => submitHandler(event)} type="submit" name="Login" value="Login" /> -->
+        <button type="submit">Login</button>
     </form>
 </div>

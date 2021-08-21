@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
 import { IRecipe } from 'src/app/shared/interfaces/recipe';
@@ -8,7 +8,7 @@ import { IRecipe } from 'src/app/shared/interfaces/recipe';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
 
   files: File[] = [];
   recipe: IRecipe = {
@@ -23,9 +23,6 @@ export class CreateComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
-
   onSelect(event: any) {
     this.recipeImage = event.addedFiles[0];
     this.files = [];
@@ -38,8 +35,6 @@ export class CreateComponent implements OnInit {
     this.recipe.description = form.form.controls.recipeDescription.value;
     this.recipe.directions = form.form.controls.recipeDirections.value;
 
-    console.log(this.recipe, this.recipeImage);
-
     this.fetchServices.uploadImage(this.recipeImage)
       .then((uploadRes: any) => {
         this.recipe.imageId = uploadRes.$id;
@@ -50,8 +45,6 @@ export class CreateComponent implements OnInit {
           .catch((err) => {
             console.log(err);
           });
-        console.log(uploadRes);
-        
       })
       .catch((err) => {
         console.log(err);
