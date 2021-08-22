@@ -18,7 +18,11 @@ export class AuthServicesService {
     return appwrite.account.createSession(email, password)
   }
 
-  getUser(email: string, password: string) {
+  logoutUser(): void {
+    appwrite.account.deleteSession('current');
+  }
+
+  getUser() {
     appwrite.account.get()
       .then(function (response) {
         console.log(response);

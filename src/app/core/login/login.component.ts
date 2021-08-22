@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
 
-  constructor(private authServices: AuthServicesService, private router: Router) {
+  constructor(private authService: AuthServicesService, private router: Router) {
 
   }
 
@@ -18,6 +18,10 @@ export class LoginComponent {
     const email: string = form.form.controls.email.value;
     const password: string = form.form.controls.password.value;
 
-    this.authServices.loginUser(email, password).then(res => this.router.navigate(["/"]));
+    this.authService.loginUser(email, password)
+      .then((res: any) => {       
+        localStorage.setItem('user', res.userId)
+        this.router.navigate(["/"]);
+      })
   }
 }
