@@ -10,6 +10,7 @@ import { IngredientsInputComponent } from './ingredients-input/ingredients-input
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,

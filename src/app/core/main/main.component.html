@@ -16,17 +16,6 @@
         <div class="card-flex-wrapper">
             <app-card *ngFor="let fetchedMeal of fetchedMeals" [fetchedMeal]="fetchedMeal" class="card-container">
             </app-card>
-            <!-- {fetchedMeals.map((meal) => (
-                <RecipeCard
-                    key={meal.$id}
-                    id={meal.$id}
-                    name={meal.name}
-                    description={meal.description}
-                    ingredients={meal.ingredients}
-                    imageId={meal.imageId}
-                    addToShoppingListHandler={addToShoppingListHandler}
-                />
-            ))} -->
         </div>
     </div>
 </div>

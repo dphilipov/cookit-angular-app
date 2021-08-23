@@ -1,0 +1,15 @@
+<div class="main-wrapper">
+    <div class="recipe-details">
+        <img [src]="imagePreview"/>
+        <div class="recipe-overview">
+            <h3>{{recipe?.name}}</h3>
+            <p>{{recipe?.description}}</p>
+        </div>
+        <h4>Ingredients:</h4>
+            <ul>
+                <li *ngFor="let ingredient of ingredients">
+                    {{ingredient.quantity}}{{ingredient.measurement}} {{ingredient.ingredient}}
+                </li>
+            </ul>
+    </div>
+</div>

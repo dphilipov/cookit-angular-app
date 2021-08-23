@@ -1,6 +1,6 @@
 <mat-card>
 
-    <a href="/recipes/${id}">
+    <a [routerLink]="['/recipes', fetchedMeal?.$id]">
         <img mat-card-image class="recipeImg" [alt]="fetchedMeal.name" [src]="imagePreview" />
     </a>
 
