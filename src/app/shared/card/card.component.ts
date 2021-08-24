@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { FetchServicesService } from 'src/app/services/fetch-services.service';
 export class CardComponent implements OnInit {
   @Input() cardClass!: string;
   @Input() fetchedMeal!: any;
+
+  @Output() addToShoppingListHandler: EventEmitter<any> = new EventEmitter();
+
   
   imagePreview: URL | undefined;
 
@@ -18,6 +21,10 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.imagePreview = this.fetchServices.previewImage(this.fetchedMeal.imageId);    
+  }
+
+  emitIngredients(ingredients: any) {
+    this.addToShoppingListHandler.emit(ingredients);
   }
 
 }

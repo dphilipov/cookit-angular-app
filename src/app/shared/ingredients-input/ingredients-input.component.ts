@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IIngredient } from '../interfaces/ingredients';
 
 @Component({
   selector: 'app-ingredients-input',
@@ -35,10 +36,10 @@ export class IngredientsInputComponent {
   @Input() dataIndex!: number;
   @Output() setRecipeIngredients: EventEmitter<any> = new EventEmitter();
 
-  data = {
-    mealIngredients: '',
-    ingredientsQuantity: 0,
-    ingredientsMeasurement: '',
+  ingredientData: IIngredient = {
+    ingredient: '',
+    quantity: 0,
+    measurement: '',
     index: 0
   };
 
@@ -49,16 +50,16 @@ export class IngredientsInputComponent {
   handleIngredientsChange(ingredientsData: any) {
     
     if (ingredientsData.name === 'mealIngredients') {
-      this.data.mealIngredients = ingredientsData.value;
+      this.ingredientData.ingredient = ingredientsData.value;
     } else if (ingredientsData.name === 'ingredientsQuantity') {
-      this.data.ingredientsQuantity = ingredientsData.value;
+      this.ingredientData.quantity = ingredientsData.value;
     } else if (ingredientsData.ngControl.name === 'ingredientsMeasurement') {
-      this.data.ingredientsMeasurement = ingredientsData.value;
+      this.ingredientData.measurement = ingredientsData.value;
     }
         
-    this.data.index = this.dataIndex;
+    this.ingredientData.index = this.dataIndex;
 
-    this.setRecipeIngredients.emit(this.data);
+    this.setRecipeIngredients.emit(this.ingredientData);
 
   }
 

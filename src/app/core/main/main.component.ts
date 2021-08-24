@@ -4,20 +4,57 @@ import { FetchServicesService } from 'src/app/services/fetch-services.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
   fetchedMeals = [];
+  shoppingListIngredients: Array<any> = [];
+  tests: any = [];
 
-  constructor(private fetchServices: FetchServicesService) { 
+  constructor(private fetchServices: FetchServicesService) {
 
   }
 
   ngOnInit(): void {
     this.fetchServices.getAll()
-    .then((res: any) => {
-      this.fetchedMeals = res.documents;
-    });
+      .then((res: any) => {
+        this.fetchedMeals = res.documents;
+      });
+  }
+
+  addToShoppingListHandler(ingredients: any): void {
+
+    ingredients.forEach((item: any) => {
+
+      // if (this.shoppingListIngredients.length === 0) {
+      //   this.shoppingListIngredients.push({ ingredient: item.ingredient, quantity: Number(item.quantity), measurement: item.measurement })
+
+      //   console.log(this.shoppingListIngredients);
+
+      // } else if (this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient)) {
+      //   let existingItem = this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient);
+
+      //   console.log(existingItem);
+
+      // }
+
+      if (this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient)) {
+        let existingItem: any = this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient);
+        let newItem = existingItem.quantity += Number(item.quantity);
+
+        console.log(newItem);
+
+      } else {
+        this.shoppingListIngredients.push({ ingredient: item.ingredient, quantity: Number(item.quantity), measurement: item.measurement })
+
+        console.log(this.shoppingListIngredients);
+
+      }
+
+
+
+    })
+
   }
 
 }

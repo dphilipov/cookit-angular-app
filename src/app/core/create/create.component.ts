@@ -23,9 +23,9 @@ export class CreateComponent {
   recipeIngredientsLength = [{}];
   recipeIngredients = [
     {
-      mealIngredients: '',
-      ingredientsQuantity: 0,
-      ingredientsMeasurement: ''
+      ingredient: '',
+      quantity: 0,
+      measurement: ''
     }
   ];
 
@@ -34,8 +34,8 @@ export class CreateComponent {
   }
 
   setRecipeIngredients(event: IIngredient): void {
-    const {mealIngredients, ingredientsQuantity, ingredientsMeasurement} = event;
-    this.recipeIngredients[event.index] = {mealIngredients, ingredientsQuantity, ingredientsMeasurement};
+    const {ingredient, quantity, measurement} = event;
+    this.recipeIngredients[event.index] = {ingredient, quantity, measurement};
   }
 
   onSelect(event: any): void {
@@ -49,9 +49,9 @@ export class CreateComponent {
 
     this.recipeIngredientsLength.push({});
     this.recipeIngredients.push({
-      mealIngredients: '',
-      ingredientsQuantity: 0,
-      ingredientsMeasurement: ''
+      ingredient: '',
+      quantity: 0,
+      measurement: ''
     });
   }
 

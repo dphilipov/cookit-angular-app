@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DetailsComponent } from './details/details.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DetailsComponent } from './details/details.component';
     RegisterComponent,
     CreateComponent,
     DetailsComponent,
+    ShoppingListComponent,
   ],
   imports: [
     CommonModule,

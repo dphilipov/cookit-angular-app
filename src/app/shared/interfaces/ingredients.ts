@@ -1,6 +1,6 @@
 export interface IIngredient {
-    mealIngredients: string,
-    ingredientsQuantity: number,
-    ingredientsMeasurement: string,
+    ingredient: string,
+    quantity: number,
+    measurement: string,
     index: number
 }

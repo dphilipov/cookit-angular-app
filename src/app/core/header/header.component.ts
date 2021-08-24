@@ -13,10 +13,9 @@ export class HeaderComponent {
 
   }
 
-  ngDoCheck() {
+  ngDoCheck(): void {
     if (this.user !== localStorage.getItem('user')) {
       this.user = localStorage.getItem('user');
-      console.log(this.user); 
     }
   }
 

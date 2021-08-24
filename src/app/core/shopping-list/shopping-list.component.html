@@ -1,0 +1,29 @@
+<div class="shopping-list-container">
+    <div class="shopping-list-list-container">
+        
+        <ul class="shopping-list-list">
+            <li *ngFor="let ingredient of shoppingListIngredients">
+                <span class="measurements-span">{{ingredient.quantity}}{{ingredient.measurement}}</span> {{ingredient.ingredient}}
+            </li>
+            <!-- {list.map(item =>
+                <ListItem
+                    className={materialStyle.shoppingListItem}
+                    dense={true}
+                    key={item.ingredient}
+                >
+                    <Typography><span className={materialStyle.measurementsSpan}>{item.quantity}{item.measurement}</span>{item.ingredient}</Typography>
+                    <HighlightOffIcon
+                        className={materialStyle.removeOneBtn}
+                        onClick={(e) => removeFromShoppingListHandler(e, item.ingredient)}
+                    />
+                </ListItem>
+            )} -->
+            </ul>
+
+        <button
+            class="remove-all-btn"
+        >
+            Remove all
+        </button>
+    </div>
+</div>

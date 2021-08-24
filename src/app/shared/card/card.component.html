@@ -15,7 +15,7 @@
     <mat-card-actions>
         <app-button btnType="basic" btnText="READ FULL RECIPE"></app-button>
 
-        <button mat-mini-fab class="add-to-shopping-list-btn">
+        <button mat-mini-fab class="add-to-shopping-list-btn" (click)="emitIngredients(fetchedMeal.ingredients)">
             <mat-icon class="add-to-shopping-list-icon">add</mat-icon>
         </button>
     </mat-card-actions>
