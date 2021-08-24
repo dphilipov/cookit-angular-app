@@ -1,9 +1,10 @@
 <div class="shopping-list-container">
     <div class="shopping-list-list-container">
-        
+
         <ul class="shopping-list-list">
             <li *ngFor="let ingredient of shoppingListIngredients">
                 <span class="measurements-span">{{ingredient.quantity}}{{ingredient.measurement}}</span> {{ingredient.ingredient}}
+                <button class="remove-one-btn" (click)="emitRemoveOne(ingredient.ingredient)">X</button>
             </li>
             <!-- {list.map(item =>
                 <ListItem
@@ -18,12 +19,9 @@
                     />
                 </ListItem>
             )} -->
-            </ul>
+        </ul>
 
-        <button
-            class="remove-all-btn"
-            (click)="emitRemoveAll($event)"
-        >
+        <button class="remove-all-btn" (click)="emitRemoveAll($event)">
             Remove all
         </button>
     </div>

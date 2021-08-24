@@ -8,15 +8,19 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ShoppingListComponent {
   @Input() shoppingListIngredients: Array<any> = [];
   @Output() removeAllHandler: EventEmitter<any> = new EventEmitter();
+  @Output() removeFromShoppingListHandler: EventEmitter<any> = new EventEmitter();
+
 
   constructor() { 
 
   }
 
-  emitRemoveAll(event: any): void {
-    console.log(event);
-    
+  emitRemoveAll(event: any): void {    
     this.removeAllHandler.emit('emit');
+  }
+
+  emitRemoveOne(event: any): void {   
+    this.removeFromShoppingListHandler.emit(event);
   }
 
 }

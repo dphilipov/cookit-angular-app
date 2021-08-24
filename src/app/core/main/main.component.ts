@@ -33,41 +33,25 @@ export class MainComponent implements OnInit {
   addToShoppingListHandler(ingredients: any): void {
 
     ingredients.forEach((item: any) => {
-
-      // if (this.shoppingListIngredients.length === 0) {
-      //   this.shoppingListIngredients.push({ ingredient: item.ingredient, quantity: Number(item.quantity), measurement: item.measurement })
-
-      //   console.log(this.shoppingListIngredients);
-
-      // } else if (this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient)) {
-      //   let existingItem = this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient);
-
-      //   console.log(existingItem);
-
-      // }
-
       if (this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient)) {
         let existingItem: any = this.shoppingListIngredients.find((x: any) => x.ingredient === item.ingredient);
         let newItem = existingItem.quantity += Number(item.quantity);
-
-        console.log(newItem);
-
       } else {
         this.shoppingListIngredients.push({ ingredient: item.ingredient, quantity: Number(item.quantity), measurement: item.measurement })
-
-        console.log(this.shoppingListIngredients);
-
       }
-
-
-
     })
-
   }
 
   removeAllHandler(): void {
     localStorage.removeItem('cachedShoppingList');
     this.shoppingListIngredients = [];
-}
+  }
 
+  removeFromShoppingListHandler(ingredient: any) {
+      this.shoppingListIngredients = this.shoppingListIngredients.filter(x => x.ingredient !== ingredient);
+      
+      if (this.shoppingListIngredients.length === 0) {
+          localStorage.removeItem('cachedShoppingList');
+      }
+  }
 }
