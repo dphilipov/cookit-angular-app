@@ -9,7 +9,6 @@ import { FetchServicesService } from 'src/app/services/fetch-services.service';
 export class MainComponent implements OnInit {
   fetchedMeals = [];
   shoppingListIngredients: Array<any> = [];
-  tests: any = [];
 
   constructor(private fetchServices: FetchServicesService) {
 
@@ -20,6 +19,15 @@ export class MainComponent implements OnInit {
       .then((res: any) => {
         this.fetchedMeals = res.documents;
       });
+  }
+
+  ngDoCheck(): void {
+    if (this.shoppingListIngredients.length > 0) {
+      localStorage.setItem('cachedShoppingList', JSON.stringify(this.shoppingListIngredients));
+    } else if (this.shoppingListIngredients.length === 0 && localStorage.getItem('cachedShoppingList')) {
+      const cache: any = localStorage.getItem('cachedShoppingList')
+      this.shoppingListIngredients = JSON.parse(cache);
+    }
   }
 
   addToShoppingListHandler(ingredients: any): void {
