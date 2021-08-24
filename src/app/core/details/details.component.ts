@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
 import { IRecipe } from 'src/app/shared/interfaces/recipe';
 
@@ -19,7 +19,7 @@ export class DetailsComponent implements OnInit {
   ];
   imagePreview: URL | undefined;
 
-  constructor(private fetchServices: FetchServicesService, private activatedRoute: ActivatedRoute) {
+  constructor(private fetchServices: FetchServicesService, private activatedRoute: ActivatedRoute, private router: Router) {
 
   }
 
@@ -32,6 +32,15 @@ export class DetailsComponent implements OnInit {
         this.ingredients = fetchedRecipe.ingredients;
         this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId);
       })
+  }
+
+  deleteRecipeHandler(): void {
+    let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
+    
+    this.fetchServices.deleteOne(recipeId)
+    .then((res: any) => {            
+      this.router.navigate(["/"]);
+    })
   }
 
 }

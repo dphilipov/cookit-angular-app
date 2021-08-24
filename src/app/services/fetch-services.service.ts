@@ -36,4 +36,8 @@ export class FetchServicesService {
   previewImage(fileId: string) {
     return appwrite.storage.getFilePreview(fileId);
   }
+
+  deleteOne(id: string) {
+    return appwrite.database.deleteDocument(COLLECTION_KEY, id);
+  }
 }
