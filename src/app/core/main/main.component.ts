@@ -65,4 +65,9 @@ export class MainComponent implements OnInit {
 
   }
 
+  removeAllHandler(): void {
+    localStorage.removeItem('cachedShoppingList');
+    this.shoppingListIngredients = [];
+}
+
 }
