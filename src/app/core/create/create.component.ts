@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
 import { IIngredient } from 'src/app/shared/interfaces/ingredients';
 import { IRecipe } from 'src/app/shared/interfaces/recipe';
@@ -13,12 +14,12 @@ export class CreateComponent {
 
   files: File[] = [];
   recipe: IRecipe = {
-    $id: '',
     name: '',
     description: '',
     ingredients: [],
     directions: '',
-    imageId: ''
+    imageId: '',
+    createdBy: '',
   }
   recipeImage: any;
   recipeIngredientsLength = [{}];
@@ -30,13 +31,13 @@ export class CreateComponent {
     }
   ];
 
-  constructor(private fetchServices: FetchServicesService, private router: Router) {
+  constructor(private fetchServices: FetchServicesService, private router: Router, private authService: AuthServicesService) {
 
   }
 
   setRecipeIngredients(event: IIngredient): void {
-    const {ingredient, quantity, measurement} = event;
-    this.recipeIngredients[event.index] = {ingredient, quantity, measurement};
+    const { ingredient, quantity, measurement } = event;
+    this.recipeIngredients[event.index] = { ingredient, quantity, measurement };
   }
 
   onSelect(event: any): void {
@@ -65,13 +66,20 @@ export class CreateComponent {
     this.fetchServices.uploadImage(this.recipeImage)
       .then((uploadRes: any) => {
         this.recipe.imageId = uploadRes.$id;
-        this.fetchServices.createOne(this.recipe)
-          .then((createRes) => {
-            this.router.navigate(["/"])
+
+        this.authService.getUser()
+          .then((currentUser: any) => {
+            this.recipe.createdBy = currentUser.$id;           
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .then(res => {
+            this.fetchServices.createOne(this.recipe)
+              .then((createRes) => {
+                this.router.navigate(["/"])
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          })
       })
       .catch((err) => {
         console.log(err);

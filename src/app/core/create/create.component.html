@@ -20,7 +20,7 @@
                 <textarea matInput ngModel name="recipeDescription"></textarea>
             </mat-form-field>
 
-            <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i" (setRecipeIngredients)="setRecipeIngredients($event)"></app-ingredients-input>
+            <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i" [recipeIngredient]="recipeIngredient" (setRecipeIngredients)="setRecipeIngredients($event)"></app-ingredients-input>
 
             <button (click)="addIngredientsFieldHandler($event)" class="addIngredient">add ingredient</button>
 

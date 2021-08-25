@@ -23,12 +23,7 @@ export class AuthServicesService {
   }
 
   getUser() {
-    appwrite.account.get()
-      .then(function (response) {
-        console.log(response);
-      }, function (error) {
-        console.log(error);
-      });
+    return appwrite.account.get();
   }
 
   deleteUser(email: string, password: string) {

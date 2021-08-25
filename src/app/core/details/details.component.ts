@@ -18,26 +18,28 @@ export class DetailsComponent implements OnInit {
     }
   ];
   imagePreview: URL | undefined;
+  recipeId!: string;
+  owner: boolean = false;
 
   constructor(private fetchServices: FetchServicesService, private activatedRoute: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
+    this.recipeId = <string>this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.fetchServices.getOne(recipeId)
+    this.fetchServices.getOne(this.recipeId)
       .then((fetchedRecipe: any) => {        
         this.recipe = fetchedRecipe;        
         this.ingredients = fetchedRecipe.ingredients;
         this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId);
+        localStorage.getItem('user') == this.recipe.createdBy ? this.owner = true : this.owner = false;
       })
+
   }
 
   deleteRecipeHandler(): void {
-    let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
-    
-    this.fetchServices.deleteOne(recipeId)
+    this.fetchServices.deleteOne(this.recipeId)
     .then((res: any) => {            
       this.router.navigate(["/"]);
     })

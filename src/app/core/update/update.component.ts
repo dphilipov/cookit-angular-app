@@ -12,12 +12,12 @@ import { IRecipe } from 'src/app/shared/interfaces/recipe';
 export class UpdateComponent implements OnInit {
   files: File[] = [];
   recipe: IRecipe = {
-    $id: '',
     name: '',
     description: '',
     ingredients: [],
     directions: '',
-    imageId: ''
+    imageId: '',
+    createdBy: ''
   }
   recipeImage: any;
   recipeIngredientsLength: Object[] = [];
@@ -50,8 +50,6 @@ export class UpdateComponent implements OnInit {
     this.recipeImage = event.addedFiles[0];
     this.files = [];
     this.files.push(this.recipeImage);
-    console.log(this.recipeImage);
-
   }
 
   addIngredientsFieldHandler(event: MouseEvent): void {
@@ -73,8 +71,9 @@ export class UpdateComponent implements OnInit {
     this.fetchServices.uploadImage(this.recipeImage)
       .then((uploadRes: any) => {
         this.recipe.imageId = uploadRes.$id;
+        let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
       
-        this.fetchServices.updateOne(this.recipe.$id, this.recipe)
+        this.fetchServices.updateOne(recipeId, this.recipe)
           .then((createRes) => {
             this.router.navigate(["/"])
           })

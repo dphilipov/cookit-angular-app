@@ -1,5 +1,4 @@
 export interface IRecipe {
-    $id: string;
     name: string;
     description: string;
     ingredients: {
@@ -9,4 +8,5 @@ export interface IRecipe {
     }[];
     directions: string;
     imageId: string;
+    createdBy: string;
 }

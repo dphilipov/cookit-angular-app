@@ -12,7 +12,7 @@
                 </li>
             </ul>
 
-            <button (click)="deleteRecipeHandler()">DELETE</button>
-            <a [routerLink]="['/update', recipe?.$id]"><button>UPDATE</button></a>
+            <button *ngIf="owner" (click)="deleteRecipeHandler()">DELETE</button>
+            <a *ngIf="owner" [routerLink]="['/update', recipeId]"><button>UPDATE</button></a>
     </div>
 </div>
