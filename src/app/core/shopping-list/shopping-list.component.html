@@ -6,19 +6,6 @@
                 <span class="measurements-span">{{ingredient.quantity}}{{ingredient.measurement}}</span> {{ingredient.ingredient}}
                 <button class="remove-one-btn" (click)="emitRemoveOne(ingredient.ingredient)">X</button>
             </li>
-            <!-- {list.map(item =>
-                <ListItem
-                    className={materialStyle.shoppingListItem}
-                    dense={true}
-                    key={item.ingredient}
-                >
-                    <Typography><span className={materialStyle.measurementsSpan}>{item.quantity}{item.measurement}</span>{item.ingredient}</Typography>
-                    <HighlightOffIcon
-                        className={materialStyle.removeOneBtn}
-                        onClick={(e) => removeFromShoppingListHandler(e, item.ingredient)}
-                    />
-                </ListItem>
-            )} -->
         </ul>
 
         <button class="remove-all-btn" (click)="emitRemoveAll($event)">

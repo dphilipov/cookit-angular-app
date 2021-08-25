@@ -13,6 +13,7 @@ export class CreateComponent {
 
   files: File[] = [];
   recipe: IRecipe = {
+    $id: '',
     name: '',
     description: '',
     ingredients: [],

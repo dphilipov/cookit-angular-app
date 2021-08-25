@@ -29,6 +29,14 @@ export class FetchServicesService {
     return appwrite.database.createDocument(COLLECTION_KEY, data, ['*'], ['*']);
   }
 
+  updateOne(id: string, data: IRecipe) {
+    return appwrite.database.updateDocument(COLLECTION_KEY, id, data);
+  }
+
+  getImage(imageId: any) {
+    return appwrite.storage.getFile(imageId);
+  }
+
   uploadImage(data: any) {
     return appwrite.storage.createFile(data, ['*'], ['*'])
   }

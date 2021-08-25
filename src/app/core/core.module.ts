@@ -14,6 +14,7 @@ import { CreateComponent } from './create/create.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DetailsComponent } from './details/details.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     CreateComponent,
     DetailsComponent,
     ShoppingListComponent,
+    UpdateComponent,
   ],
   imports: [
     CommonModule,

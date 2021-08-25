@@ -1,8 +1,8 @@
 <div class="main-wrapper">
-    <h3>Add a recipe</h3>
+    <h3>Update a recipe</h3>
 
-    <div class="create-container">
-        <form #form="ngForm" class="create-form-container" (ngSubmit)="submitRecipeHandler(form)">
+    <div class="update-container">
+        <form #form="ngForm" class="update-form-container" (ngSubmit)="submitRecipeHandler(form)">
 
             <ngx-dropzone (change)="onSelect($event)" accept="image/*" [multiple]="false">
                 <ngx-dropzone-label>Drag & drop a recipe image</ngx-dropzone-label>
@@ -12,24 +12,24 @@
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeName">Recipe Name</mat-label>
-                <input matInput ngModel name="recipeName">
+                <input matInput ngModel name="recipeName" [value]="recipe.name">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label for="recipeDescription">Recipe Description</mat-label>
+                <mat-label for="recipeDescription">{{recipe.description}}</mat-label>
                 <textarea matInput ngModel name="recipeDescription"></textarea>
             </mat-form-field>
 
-            <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i" (setRecipeIngredients)="setRecipeIngredients($event)"></app-ingredients-input>
+            <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i" [recipeIngredient]="recipeIngredient" (setRecipeIngredients)="setRecipeIngredients($event)"></app-ingredients-input>
 
             <button (click)="addIngredientsFieldHandler($event)" class="addIngredient">add ingredient</button>
 
             <mat-form-field appearance="outline">
-                <mat-label for="recipeDirections">Directions</mat-label>
+                <mat-label for="recipeDirections">{{recipe.directions}}</mat-label>
                 <textarea matInput ngModel name="recipeDirections"></textarea>
             </mat-form-field>
 
-            <app-button btnClass="nav-btn" btnType="stroked" btnText="CREATE">
+            <app-button btnClass="nav-btn" btnType="stroked" btnText="UPDATE">
                 SUBMIT
             </app-button>
 

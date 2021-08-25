@@ -9,7 +9,7 @@ import { IRecipe } from 'src/app/shared/interfaces/recipe';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  recipe?: IRecipe;
+  recipe!: IRecipe;
   ingredients?: [
     {
       ingredient: string,
@@ -27,8 +27,8 @@ export class DetailsComponent implements OnInit {
     let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
 
     this.fetchServices.getOne(recipeId)
-      .then((fetchedRecipe: any) => {
-        this.recipe = fetchedRecipe;
+      .then((fetchedRecipe: any) => {        
+        this.recipe = fetchedRecipe;        
         this.ingredients = fetchedRecipe.ingredients;
         this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId);
       })

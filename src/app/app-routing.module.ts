@@ -4,6 +4,7 @@ import { DetailsComponent } from './core/details/details.component';
 import { LoginComponent } from './core/login/login.component';
 import { MainComponent } from './core/main/main.component';
 import { RegisterComponent } from './core/register/register.component';
+import { UpdateComponent } from './core/update/update.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
     {
         path: 'recipes/:id',
         component: DetailsComponent 
+    },
+    {
+        path: 'update/:id',
+        component: UpdateComponent
     }
 ];
 

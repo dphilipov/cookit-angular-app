@@ -13,5 +13,6 @@
             </ul>
 
             <button (click)="deleteRecipeHandler()">DELETE</button>
+            <a [routerLink]="['/update', recipe?.$id]"><button>UPDATE</button></a>
     </div>
 </div>

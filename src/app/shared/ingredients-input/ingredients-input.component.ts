@@ -33,6 +33,7 @@ export class IngredientsInputComponent {
       label: "pcs"
     },
   ]
+  @Input() recipeIngredient!: any;
   @Input() dataIndex!: number;
   @Output() setRecipeIngredients: EventEmitter<any> = new EventEmitter();
 
@@ -47,16 +48,15 @@ export class IngredientsInputComponent {
 
   }
 
-  handleIngredientsChange(ingredientsData: any) {
-    
-    if (ingredientsData.name === 'mealIngredients') {
+  handleIngredientsChange(ingredientsData: any) {   
+    if (ingredientsData.name === 'mealIngredients') {      
       this.ingredientData.ingredient = ingredientsData.value;
     } else if (ingredientsData.name === 'ingredientsQuantity') {
       this.ingredientData.quantity = ingredientsData.value;
     } else if (ingredientsData.ngControl.name === 'ingredientsMeasurement') {
       this.ingredientData.measurement = ingredientsData.value;
     }
-        
+
     this.ingredientData.index = this.dataIndex;
 
     this.setRecipeIngredients.emit(this.ingredientData);
