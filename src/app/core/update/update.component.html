@@ -12,12 +12,13 @@
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeName">Recipe Name</mat-label>
-                <input matInput ngModel name="recipeName" [value]="recipe.name">
+                <input matInput [(ngModel)]="recipe.name" name="recipeName" [value]="recipe.name">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label for="recipeDescription">{{recipe.description}}</mat-label>
-                <textarea matInput ngModel name="recipeDescription"></textarea>
+                <mat-label for="recipeDescription">Recipe Description</mat-label>
+                <textarea matInput [(ngModel)]="recipe.description" name="recipeDescription" [value]="recipe.description"></textarea>
+                <mat-hint>Max characters = 150</mat-hint>
             </mat-form-field>
 
             <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i" [recipeIngredient]="recipeIngredient" (setRecipeIngredients)="setRecipeIngredients($event)"></app-ingredients-input>
@@ -25,8 +26,8 @@
             <button (click)="addIngredientsFieldHandler($event)" class="add-ingredient">add ingredient</button>
 
             <mat-form-field appearance="outline">
-                <mat-label for="recipeDirections">{{recipe.directions}}</mat-label>
-                <textarea matInput ngModel name="recipeDirections"></textarea>
+                <mat-label for="recipeDirections">Recipe Directions</mat-label>
+                <textarea matInput [(ngModel)]="recipe.directions" name="recipeDirections" [matAutosizeMinRows]="10" [matTextareaAutosize]="true">{{recipe.directions}}</textarea>
             </mat-form-field>
 
             <app-button btnClass="update recipe-btn" btnType="basic" btnText="UPDATE">

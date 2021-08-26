@@ -61,6 +61,6 @@ h4 {
 .buttons-container {
     display: flex;
     column-gap: 20px;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 20px;
 }

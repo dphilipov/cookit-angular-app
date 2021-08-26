@@ -37,8 +37,6 @@ export class UpdateComponent implements OnInit {
         this.recipeIngredients = this.recipe.ingredients;
       })
 
-
-
   }
 
   setRecipeIngredients(event: IIngredient): void {
@@ -64,6 +62,8 @@ export class UpdateComponent implements OnInit {
   }
 
   submitRecipeHandler(form: any): void {
+    console.log(form);
+    
     this.recipe.name !== form.form.controls.recipeName.value ? this.recipe.name = form.form.controls.recipeName.value : null;
     this.recipe.description !== form.form.controls.recipeDescription.value ? this.recipe.description = form.form.controls.recipeDescription.value : null;
     this.recipe.directions !== form.form.controls.recipeDirections.value ? this.recipe.directions = form.form.controls.recipeDirections.value : null;

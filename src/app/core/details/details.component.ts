@@ -29,7 +29,7 @@ export class DetailsComponent implements OnInit {
     this.recipeId = <string>this.activatedRoute.snapshot.paramMap.get('id');
 
     this.fetchServices.getOne(this.recipeId)
-      .then((fetchedRecipe: any) => {        
+      .then((fetchedRecipe: any) => {                
         this.recipe = fetchedRecipe;        
         this.ingredients = fetchedRecipe.ingredients;
         this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId);
