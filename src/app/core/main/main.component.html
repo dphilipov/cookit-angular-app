@@ -1,6 +1,6 @@
 <div class="main-wrapper">
     <a href="/create">
-        <app-button btnClass="create-btn" btnType="raised" btnText="CREATE RECIPE"></app-button>
+        <app-button *ngIf="loggedIn" btnClass="create-btn" btnType="raised" btnText="CREATE RECIPE"></app-button>
     </a>
 
     <div class="main-contents-wrapper">

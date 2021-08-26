@@ -23,6 +23,7 @@ export class HeaderComponent {
   handleLogout(): void {
     this.authService.logoutUser();
     localStorage.removeItem('user');
+    localStorage.removeItem('cachedShoppingList');
     this.user = null;  
     
     this.router.navigate(["/login"]);

@@ -14,6 +14,7 @@ export class CardComponent implements OnInit {
 
   
   imagePreview: URL | undefined;
+  loggedIn: boolean = false;
 
   constructor(private fetchServices: FetchServicesService) { 
 
@@ -21,6 +22,8 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.imagePreview = this.fetchServices.previewImage(this.fetchedMeal.imageId);    
+
+    localStorage.getItem('user') ? this.loggedIn = true : this.loggedIn = false;
   }
 
   emitIngredients(ingredients: any) {

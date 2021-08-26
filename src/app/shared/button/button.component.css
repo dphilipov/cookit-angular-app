@@ -19,7 +19,22 @@
     text-transform: uppercase;
 }
 
-.create-recipe-btn {
+.remove-all-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+.recipe-btn, .login-btn, .register-btn {
     background-color: #FF6961;
     color: #fff;
 }
+
+.delete {
+    background-color: red;
+}
+
+.update {
+    background-color: orange;
+}
+
+

@@ -1,3 +1,7 @@
+a {
+    color: #FF6961;
+}
+
 .card-container {
     width: 23%;
     /* [theme.breakpoints.down('md')]: {
@@ -11,9 +15,13 @@
     }, */
 }
 
-.recipeImg {
+.recipe-img {
     height: 140px;
     object-fit: cover;
+}
+
+.recipe-name {
+    overflow-wrap: anywhere;
 }
 
 .card-actions-container {
@@ -22,10 +30,19 @@
     padding-right: 0;
 }
 
+.recipe-actions {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
 .add-to-shopping-list-btn {
     padding-left: 0;
     padding-right: 0;
-    background-color: #000;
+    background-color: rgb(51, 51, 51);
+    margin-right: 10px;
+    height: 36px;
+    width: 36px;
 }
 
 .add-to-shopping-list-btn:hover {
@@ -34,4 +51,5 @@
 
 .add-to-shopping-list-icon {
     color: #FFF;
+    line-height: 18px;
 }

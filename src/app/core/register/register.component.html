@@ -1,5 +1,5 @@
 <div class="main-wrapper">
-    <h3>Registration Info</h3>
+    <h3>REGISTRATION INFO</h3>
 
     <form #form="ngForm" (ngSubmit)="registerHandler(form)" class="register-form">
 
@@ -12,6 +12,8 @@
         <label for="rePassword">Repeat Password:</label>
         <input ngModel type="password" name="rePassword" id="rePassword" placeholder="Enter your password again" />
 
-        <button type="submit">Register</button>
+        <app-button type=submit btnClass="register-btn" btnType="basic" btnText="REGISTER">
+            REGISTER
+        </app-button>
     </form>
 </div>

@@ -1,5 +1,5 @@
 <div class="main-wrapper">
-    <h3>Login Info</h3>
+    <h3>LOGIN INFO</h3>
 
     <form #form="ngForm" (ngSubmit)="loginHandler(form)" class="login-form">
 
@@ -21,6 +21,9 @@
             ngModel
         />
 
-        <button type="submit">Login</button>
+        <app-button type=submit btnClass="login-btn" btnType="basic" btnText="LOGIN">
+            LOGIN
+        </app-button>
+
     </form>
 </div>

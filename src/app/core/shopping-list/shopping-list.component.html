@@ -1,15 +1,16 @@
 <div class="shopping-list-container">
     <div class="shopping-list-list-container">
-
+        <h4>SHOPPING LIST:</h4>
         <ul class="shopping-list-list">
-            <li *ngFor="let ingredient of shoppingListIngredients">
-                <span class="measurements-span">{{ingredient.quantity}}{{ingredient.measurement}}</span> {{ingredient.ingredient}}
-                <button class="remove-one-btn" (click)="emitRemoveOne(ingredient.ingredient)">X</button>
+            <li *ngFor="let ingredient of shoppingListIngredients" class="shopping-list-item">
+                <p><span class="measurements-span">{{ingredient.quantity}}{{ingredient.measurement}}</span>
+                    {{ingredient.ingredient}}</p>
+                <mat-icon class="remove-one-btn" (click)="emitRemoveOne(ingredient.ingredient)" aria-hidden="false"
+                    aria-label="Example home icon">delete</mat-icon>
             </li>
         </ul>
 
-        <button class="remove-all-btn" (click)="emitRemoveAll($event)">
-            Remove all
-        </button>
+        <app-button (click)="emitRemoveAll($event)" btnClass="remove-all-btn" btnType="stroked" btnText="REMOVE ALL">
+        </app-button>
     </div>
 </div>

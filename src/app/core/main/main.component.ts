@@ -9,6 +9,7 @@ import { FetchServicesService } from 'src/app/services/fetch-services.service';
 export class MainComponent implements OnInit {
   fetchedMeals = [];
   shoppingListIngredients: Array<any> = [];
+  loggedIn: boolean = false;
 
   constructor(private fetchServices: FetchServicesService) {
 
@@ -19,6 +20,8 @@ export class MainComponent implements OnInit {
       .then((res: any) => {
         this.fetchedMeals = res.documents;
       });
+
+    localStorage.getItem('user') ? this.loggedIn = true : this.loggedIn = false;
   }
 
   ngDoCheck(): void {
@@ -48,10 +51,10 @@ export class MainComponent implements OnInit {
   }
 
   removeFromShoppingListHandler(ingredient: any) {
-      this.shoppingListIngredients = this.shoppingListIngredients.filter(x => x.ingredient !== ingredient);
-      
-      if (this.shoppingListIngredients.length === 0) {
-          localStorage.removeItem('cachedShoppingList');
-      }
+    this.shoppingListIngredients = this.shoppingListIngredients.filter(x => x.ingredient !== ingredient);
+
+    if (this.shoppingListIngredients.length === 0) {
+      localStorage.removeItem('cachedShoppingList');
+    }
   }
 }

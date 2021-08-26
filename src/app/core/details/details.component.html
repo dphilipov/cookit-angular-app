@@ -1,18 +1,31 @@
 <div class="main-wrapper">
-    <div class="recipe-details">
-        <img [src]="imagePreview"/>
-        <div class="recipe-overview">
-            <h3>{{recipe?.name}}</h3>
-            <p>{{recipe?.description}}</p>
-        </div>
-        <h4>Ingredients:</h4>
-            <ul>
+    <h3>{{recipe?.name}}</h3>
+    <p class="recipe-description">{{recipe?.description}}</p>
+    <div class="recipe-details-container">
+        <div class="ingredients-container">
+            <h4>INGREDIENTS</h4>
+            <ul class="ingredients-list">
                 <li *ngFor="let ingredient of ingredients">
-                    {{ingredient.quantity}}{{ingredient.measurement}} {{ingredient.ingredient}}
+                    <b>{{ingredient.quantity}}{{ingredient.measurement}}</b> {{ingredient.ingredient}}
                 </li>
             </ul>
+        </div>
 
-            <button *ngIf="owner" (click)="deleteRecipeHandler()">DELETE</button>
-            <a *ngIf="owner" [routerLink]="['/update', recipeId]"><button>UPDATE</button></a>
+        <div class="content-container">
+            <img [src]="imagePreview" />
+            <p class="recipe-directions">{{recipe?.directions}}</p>
+        </div>
+
+    </div>
+
+    <div *ngIf="owner" class="buttons-container">
+        <app-button (click)="deleteRecipeHandler()" btnClass="delete recipe-btn" btnType="basic" btnText="DELETE RECIPE">
+            DELETE
+        </app-button>
+        <a *ngIf="owner" [routerLink]="['/update', recipeId]">
+            <app-button btnClass="update recipe-btn" btnType="basic" btnText="UPDATE RECIPE">
+                UPDATE
+            </app-button>
+        </a>
     </div>
 </div>

@@ -1,10 +1,10 @@
 <mat-card>
 
     <a [routerLink]="['/recipes', fetchedMeal?.$id]">
-        <img mat-card-image class="recipeImg" [alt]="fetchedMeal.name" [src]="imagePreview" />
+        <img mat-card-image class="recipe-img" [alt]="fetchedMeal.name" [src]="imagePreview" />
     </a>
 
-    <mat-card-title>{{fetchedMeal.name}}</mat-card-title>
+    <mat-card-title class="recipe-name">{{fetchedMeal.name}}</mat-card-title>
 
     <mat-card-content>
         <p>
@@ -12,12 +12,14 @@
         </p>
     </mat-card-content>
 
-    <mat-card-actions>
-        <app-button btnType="basic" btnText="READ FULL RECIPE"></app-button>
+    <mat-card-actions class="recipe-actions">
+        <app-button [routerLink]="['/recipes', fetchedMeal?.$id]" btnType="basic" btnText="READ FULL RECIPE">
+        </app-button>
 
-        <button mat-mini-fab class="add-to-shopping-list-btn" (click)="emitIngredients(fetchedMeal.ingredients)">
+        <button *ngIf="loggedIn" mat-mini-fab class="add-to-shopping-list-btn" (click)="emitIngredients(fetchedMeal.ingredients)">
             <mat-icon class="add-to-shopping-list-icon">add</mat-icon>
         </button>
+
     </mat-card-actions>
 
 </mat-card>

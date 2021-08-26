@@ -1,10 +1,10 @@
 h3 {
-    color: #314a36;
-    text-align: center;
+    color: #FF6961;
     font-size: 50px;
     margin: 25px 0 20px 0;
     font-weight: 500;
-    line-height: normal;
+    line-height: initial;
+    text-align: center;
 }
 
 .register-form {
@@ -14,19 +14,18 @@ h3 {
 }
 
 .register-form label {
-    color: #314a36;
     display: block;
     font-size: 18px;
 }
 
 .register-form input {
-    border: none;
+    border: 1px solid rgb(167, 167, 167);
     border-radius: 5px;
     line-height: 50px;
     display: block;
     margin: 10px auto;
     width: calc(100% - 20px);
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .register-form input[type="submit"] {
