@@ -18,3 +18,8 @@
     letter-spacing: 0.02857em;
     text-transform: uppercase;
 }
+
+.create-recipe-btn {
+    background-color: #FF6961;
+    color: #fff;
+}

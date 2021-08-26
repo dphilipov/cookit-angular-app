@@ -15,6 +15,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DetailsComponent } from './details/details.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { UpdateComponent } from './update/update.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UpdateComponent } from './update/update.component';
     SharedModule,
     RouterModule,
     MatInputModule,
+    MatIconModule,
     FormsModule,
     NgxDropzoneModule
   ],

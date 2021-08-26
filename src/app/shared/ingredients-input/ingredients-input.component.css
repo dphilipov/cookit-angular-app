@@ -1,0 +1,17 @@
+.ingredients-input-container {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+}
+
+.ingredients-input-ingredient {
+    flex: 3;
+}
+
+.ingredients-input-quantity {
+    flex: 1;
+}
+
+.ingredients-input-measurement {
+    flex: 1;
+}
