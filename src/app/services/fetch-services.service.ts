@@ -15,8 +15,8 @@ export class FetchServicesService {
   }
 
 
-  getAll() {
-    return appwrite.database.listDocuments(COLLECTION_KEY, undefined, undefined, undefined, undefined, 'DESC');
+  getAll(filter?: any) {
+    return appwrite.database.listDocuments(COLLECTION_KEY, filter, undefined, undefined, undefined, 'DESC');
   }
 
   getOne(id: string) {

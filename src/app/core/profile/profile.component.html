@@ -1,0 +1,11 @@
+<div class="main-wrapper">
+    <h3>Hello {{userEmail}}</h3>
+    <p *ngIf="fetchedMeals.length==1">You have {{fetchedMeals.length}} recipe</p>
+    <p *ngIf="fetchedMeals.length!=1">You have {{fetchedMeals.length}} recipes</p>
+
+    <app-shopping-list *ngIf="shoppingListIngredients.length > 0" [shoppingListIngredients]="shoppingListIngredients" (removeAllHandler)="removeAllHandler()" (removeFromShoppingListHandler)="removeFromShoppingListHandler($event)"></app-shopping-list>
+
+    <div class="card-flex-wrapper">
+        <app-card *ngFor="let fetchedMeal of fetchedMeals" [fetchedMeal]="fetchedMeal" class="card-container" (addToShoppingListHandler)=addToShoppingListHandler($event)></app-card>
+    </div>
+</div>
