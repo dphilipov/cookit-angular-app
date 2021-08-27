@@ -94,27 +94,6 @@ export class CreateComponent {
 
       let check: boolean = true;
 
-      // this.recipe.ingredients.forEach(recipe => {
-      //   if (recipe.ingredient == '' || recipe.measurement == '') {
-      //     this.error = {
-      //       type: 'bad',
-      //       message: 'You must enter a value!'
-      //     }
-
-      //     check = false;
-      //   } else if (recipe.quantity <= 0) {
-      //     this.error = {
-      //       type: 'bad',
-      //       message: 'Quantity must be a valid number!'
-      //     }
-
-      //     check = false;
-      //   }
-      //   else {
-      //     check = true;
-      //   }
-      // })
-
       for (let i = 0; i < this.recipe.ingredients.length; i++) {
         if (this.recipe.ingredients[i].ingredient == '' || this.recipe.ingredients[i].measurement == '') {
           this.error = {
@@ -138,7 +117,6 @@ export class CreateComponent {
           return;
         }
       }
-      console.log(this.recipe.ingredients);
 
       if (!check) {
         return;
