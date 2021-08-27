@@ -12,13 +12,13 @@
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeName">Recipe Name</mat-label>
-                <input matInput ngModel name="recipeName">
+                <input matInput ngModel name="recipeName" required>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeDescription">Recipe Description</mat-label>
-                <textarea matInput ngModel name="recipeDescription"></textarea>
-                <mat-hint>Max characters = 150</mat-hint>
+                <textarea matInput #recipeDescriptionInput ngModel name="recipeDescription" maxlength="150" required></textarea>
+                <mat-hint>Max characters = {{recipeDescriptionInput.value?.length || 0}}/150</mat-hint>
             </mat-form-field>
 
             <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i"
@@ -31,12 +31,13 @@
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeDirections">Directions</mat-label>
-                <textarea matInput ngModel name="recipeDirections" [matAutosizeMinRows]="10" [matTextareaAutosize]="true"></textarea>
+                <textarea matInput ngModel name="recipeDirections" [matAutosizeMinRows]="10" [matTextareaAutosize]="true" required></textarea>
             </mat-form-field>
-
+            
             <app-button btnClass="create recipe-btn" btnType="basic" btnText="CREATE">
                 CREATE
             </app-button>
+            <app-error-message *ngIf="error" [type]="error?.type" [message]="error?.message"></app-error-message>
 
         </form>
     </div>

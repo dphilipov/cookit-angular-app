@@ -2,19 +2,25 @@
 
     <mat-form-field appearance="outline" class="ingredients-input-ingredient">
         <mat-label for="mealIngredients">Ingredient</mat-label>
-        <input type="text" matInput [(ngModel)]="recipeIngredient.ingredient" name="mealIngredients" #mealIngredients (keyup)="handleIngredientsChange(mealIngredients)" [placeholder]="recipeIngredient.ingredient" [value]="recipeIngredient.ingredient">
+        <input type="text" matInput [(ngModel)]="recipeIngredient.ingredient" name="mealIngredients" #mealIngredients
+            (keyup)="handleIngredientsChange(mealIngredients)" [placeholder]="recipeIngredient.ingredient"
+            [value]="recipeIngredient.ingredient" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="ingredients-input-quantity">
         <mat-label for="ingredientsQuantity">Quantity</mat-label>
-        <input type="number" min="0" matInput [(ngModel)]="recipeIngredient.quantity" name="ingredientsQuantity" #ingredientsQuantity (keyup)="handleIngredientsChange(ingredientsQuantity)" (change)="handleIngredientsChange(ingredientsQuantity)" [placeholder]="recipeIngredient.quantity" [value]="recipeIngredient.quantity">
+        <input type="number" min="0" matInput [(ngModel)]="recipeIngredient.quantity" name="ingredientsQuantity"
+            #ingredientsQuantity (keyup)="handleIngredientsChange(ingredientsQuantity)"
+            (change)="handleIngredientsChange(ingredientsQuantity)" [placeholder]="recipeIngredient.quantity"
+            [value]="recipeIngredient.quantity" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="ingredients-input-measurement">
         <mat-label for="ingredientsMeasurement">Measurement</mat-label>
-        <mat-select [(ngModel)]="recipeIngredient.measurement" name="ingredientsMeasurement" #ingredientsMeasurement (focus)="handleIngredientsChange(ingredientsMeasurement)">
+        <mat-select [(ngModel)]="recipeIngredient.measurement" name="ingredientsMeasurement" #ingredientsMeasurement
+            (focus)="handleIngredientsChange(ingredientsMeasurement)" required>
             <mat-option *ngFor="let option of options" [value]="option.value">{{option.label}}</mat-option>
-          </mat-select>
+        </mat-select>
     </mat-form-field>
 
 </div>

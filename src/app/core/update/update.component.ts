@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
+import { IError } from 'src/app/shared/interfaces/error';
 import { IIngredient } from 'src/app/shared/interfaces/ingredients';
 import { IRecipe } from 'src/app/shared/interfaces/recipe';
 
@@ -22,6 +23,8 @@ export class UpdateComponent implements OnInit {
   recipeImage: any;
   recipeIngredientsLength: Object[] = [];
   recipeIngredients: any = [];
+  error!: IError | null;
+
 
   constructor(private fetchServices: FetchServicesService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -40,6 +43,7 @@ export class UpdateComponent implements OnInit {
   }
 
   setRecipeIngredients(event: IIngredient): void {
+
     const { ingredient, quantity, measurement } = event;
     this.recipeIngredients[event.index] = { ingredient, quantity, measurement };
   }
@@ -61,29 +65,79 @@ export class UpdateComponent implements OnInit {
     });
   }
 
-  submitRecipeHandler(form: any): void {
-    console.log(form);
-    
+  updateRecipeHandler(form: any): void {
+
     this.recipe.name !== form.form.controls.recipeName.value ? this.recipe.name = form.form.controls.recipeName.value : null;
     this.recipe.description !== form.form.controls.recipeDescription.value ? this.recipe.description = form.form.controls.recipeDescription.value : null;
     this.recipe.directions !== form.form.controls.recipeDirections.value ? this.recipe.directions = form.form.controls.recipeDirections.value : null;
-    
-    this.fetchServices.uploadImage(this.recipeImage)
-      .then((uploadRes: any) => {
-        this.recipe.imageId = uploadRes.$id;
-        let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
-      
-        this.fetchServices.updateOne(recipeId, this.recipe)
-          .then((createRes) => {
-            this.router.navigate(["/"])
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+
+    if (this.recipe.name == '' || this.recipe.description == '' || this.recipe.directions == '') {
+      this.error = {
+        type: 'bad',
+        message: 'You must enter a value!'
+      }
+
+      return;
+    } else if (this.files.length == 0) {
+      this.error = {
+        type: 'bad',
+        message: 'You must upload an image!'
+      }
+
+      return;
+    } else if (this.recipe.ingredients) {
+
+      let check: boolean = false;
+
+      for (let i = 0; i < this.recipe.ingredients.length; i++) {
+        if (this.recipe.ingredients[i].ingredient == '' || this.recipe.ingredients[i].measurement == '') {
+          this.error = {
+            type: 'bad',
+            message: 'You must enter a value!'
+          }
+
+          check = false;
+        } else if (this.recipe.ingredients[i].quantity <= 0) {
+          this.error = {
+            type: 'bad',
+            message: 'Quantity must be a valid number!'
+          }
+
+          check = false;
+        } else {
+          check = true;
+        }
+
+        if (!check) {
+          return;
+        }
+    }    
+
+    if (!check) {
+      return;
+    }
+
+  } else {
+  this.error = null;
+}
+
+
+this.fetchServices.uploadImage(this.recipeImage)
+  .then((uploadRes: any) => {
+    this.recipe.imageId = uploadRes.$id;
+    let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.fetchServices.updateOne(recipeId, this.recipe)
+      .then((createRes) => {
+        this.router.navigate(["/"])
       })
       .catch((err) => {
         console.log(err);
       });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
   }
 

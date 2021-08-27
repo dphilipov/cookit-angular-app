@@ -16,6 +16,7 @@ import { DetailsComponent } from './details/details.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { UpdateComponent } from './update/update.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     DetailsComponent,
     ShoppingListComponent,
     UpdateComponent,
+    ErrorMessageComponent,
   ],
   imports: [
     CommonModule,
