@@ -15,5 +15,7 @@
         <app-button type=submit btnClass="register-btn" btnType="basic" btnText="REGISTER">
             REGISTER
         </app-button>
+        <app-error-message *ngIf="error" [type]="error?.type" [message]="error?.message"></app-error-message>
+
     </form>
 </div>

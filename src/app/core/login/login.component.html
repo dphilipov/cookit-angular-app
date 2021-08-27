@@ -24,6 +24,7 @@
         <app-button type=submit btnClass="login-btn" btnType="basic" btnText="LOGIN">
             LOGIN
         </app-button>
+        <app-error-message *ngIf="error" [type]="error?.type" [message]="error?.message"></app-error-message>
 
     </form>
 </div>
