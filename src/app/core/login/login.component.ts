@@ -39,7 +39,7 @@ export class LoginComponent {
     } else if (password.length < 6 || password.length > 32) {
       this.error = {
         type: 'bad',
-        message: "Password must be betwee 6 and 32 chars long"
+        message: "Password must be between 6 and 32 chars long"
       }
     } else {
       this.error = null;
