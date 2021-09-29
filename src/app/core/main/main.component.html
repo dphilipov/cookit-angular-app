@@ -1,12 +1,25 @@
-<div class="main-wrapper">
-    <a routerLink="/create">
-        <app-button *ngIf="loggedIn" btnClass="create-btn" btnType="raised" btnText="CREATE RECIPE"></app-button>
-    </a>
+<div class="main-wrapper-with-shopping-list">
+    <div class="left-row">
+        <app-shopping-list *ngIf="shoppingListIngredients.length > 0"
+            [shoppingListIngredients]="shoppingListIngredients" (removeAllHandler)="removeAllHandler()"
+            (removeFromShoppingListHandler)="removeFromShoppingListHandler($event)"
+            class="sticky"
+        >
+        </app-shopping-list>
+    </div>
+    <div class="main-wrapper center-row">
+        <a routerLink="/create">
+            <app-button *ngIf="loggedIn" btnClass="create-btn" btnType="raised" btnText="CREATE RECIPE"></app-button>
+        </a>
 
-    <div class="main-contents-wrapper">
-        <app-shopping-list *ngIf="shoppingListIngredients.length > 0" [shoppingListIngredients]="shoppingListIngredients" (removeAllHandler)="removeAllHandler()" (removeFromShoppingListHandler)="removeFromShoppingListHandler($event)"></app-shopping-list>
-        <div class="card-flex-wrapper">
-            <app-card *ngFor="let fetchedMeal of fetchedMeals" [fetchedMeal]="fetchedMeal" class="card-container" (addToShoppingListHandler)=addToShoppingListHandler($event)></app-card>
+        <div class="main-contents-wrapper">
+            <div class="card-flex-wrapper">
+                <app-card *ngFor="let fetchedMeal of fetchedMeals" [fetchedMeal]="fetchedMeal" class="card-container"
+                    (addToShoppingListHandler)=addToShoppingListHandler($event)></app-card>
+            </div>
         </div>
+    </div>
+
+    <div class="right-row">
     </div>
 </div>
