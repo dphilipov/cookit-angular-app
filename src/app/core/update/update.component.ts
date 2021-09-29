@@ -67,9 +67,9 @@ export class UpdateComponent implements OnInit {
 
   updateRecipeHandler(form: any): void {
 
-    this.recipe.name !== form.form.controls.recipeName.value ? this.recipe.name = form.form.controls.recipeName.value : null;
-    this.recipe.description !== form.form.controls.recipeDescription.value ? this.recipe.description = form.form.controls.recipeDescription.value : null;
-    this.recipe.directions !== form.form.controls.recipeDirections.value ? this.recipe.directions = form.form.controls.recipeDirections.value : null;
+    this.recipe.name = form.form.controls.recipeName.value.trim();    
+    this.recipe.description = form.form.controls.recipeDescription.value.trim();
+    this.recipe.directions = form.form.controls.recipeDirections.value.trim();
 
     if (this.recipe.name == '' || this.recipe.description == '' || this.recipe.directions == '') {
       this.error = {

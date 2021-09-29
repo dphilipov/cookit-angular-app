@@ -71,10 +71,10 @@ export class CreateComponent {
   }
 
   submitRecipeHandler(form: any): void {
-    this.recipe.name = form.form.controls.recipeName.value;
-    this.recipe.description = form.form.controls.recipeDescription.value;
+    this.recipe.name = form.form.controls.recipeName.value.trim();
+    this.recipe.description = form.form.controls.recipeDescription.value.trim();
     this.recipe.ingredients = this.recipeIngredients;
-    this.recipe.directions = form.form.controls.recipeDirections.value;
+    this.recipe.directions = form.form.controls.recipeDirections.value.trim();
 
     if (this.recipe.name == '' || this.recipe.description == '' || this.recipe.directions == '') {
       this.error = {
