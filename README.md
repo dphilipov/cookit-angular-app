@@ -11,8 +11,8 @@
     Create & browse delicious cooking recipes and generate a shopping list with ingredients!
     <br />
     <br />
-    <!-- <a href="https://www.mosquitoapp.net">Live Demo</a>
-    · -->
+    <a href="https://www.cookitapp.org">Live Demo</a>
+    ·
     <a href="https://github.com/dphilipov?tab=repositories">Explore my other projects</a>
   </p>
 </p>
@@ -32,6 +32,7 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -77,7 +78,12 @@ The project is built using:
 <!-- GETTING STARTED -->
 ## Getting Started
 
+### Prerequisites
 
+To start the project, you first need to install Angular CLI
+   ```sh
+   npm install -g @angular/cli
+   ```
 
 ### Installation
 
@@ -99,7 +105,11 @@ The project is built using:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-**Register** a new account & **Login**. This allows you to **Create** new landmarks, to **Comment** on all existing ones and to **Tag/Untag** on the ones you have visited. Furthermore, you can **Edit** & **Delete** the landmarks you have created. Going to **Map** loads a map with all of your created landmarks. In your **Profile** page you can view your latest activity and **Delete** your account if needed.
+### [View the Live Demo](https://www.cookitapp.org)
+
+**Register** a new account & **Login**. This allows you to **Create** new recipes and to add recipe ingredients to a **Shopping List**. The **Shopping List** persists while navigating the website and detects automatically if you are adding an already existing ingredient. In such cases, the **Shopping List** combines the quantities under one entry. Furthermore, you can **Edit** & **Delete** the recipes you have created. In your **Profile** page you can view all of your created recipes and **Delete** your account if needed.
+
+![Shopping List Preview][shopping-list-preview]
 
 
 <!-- CONTACT -->
@@ -121,3 +131,4 @@ Project Link: [https://github.com/dphilipov/cookit-angular-app.git](https://gith
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [app-screenshot]: /src/assets/app-screenshot.png
 [sctructure-screenshot]: src/assets/structure.png
+[shopping-list-preview]: src/assets/shopping-list-preview.gif
