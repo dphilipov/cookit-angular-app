@@ -30,17 +30,22 @@ export class IngredientsInputComponent {
 
   handleIngredientsChange(ingredientsData: any) {
 
-    if (ingredientsData.name === 'mealIngredients') {
-      this.recipeIngredient.ingredient = ingredientsData.value.trim();
+    if (ingredientsData.name === 'mealIngredients') {      
+      this.recipeIngredient.ingredient = ingredientsData.value;
     } else if (ingredientsData.name === 'ingredientsQuantity') {
-      this.recipeIngredient.quantity = ingredientsData.value.trim();
+      this.recipeIngredient.quantity = ingredientsData.value;
     } else if (ingredientsData.ngControl.name === 'ingredientsMeasurement') {
-      this.recipeIngredient.measurement = ingredientsData.value.trim();
+      this.recipeIngredient.measurement = ingredientsData.value;
     }
 
     this.recipeIngredient.index = this.dataIndex;
 
-    this.setRecipeIngredients.emit(this.recipeIngredient);
+    const trimmedRecipeIngredient = {
+      ...this.recipeIngredient,
+      ingredient: this.recipeIngredient.ingredient.trim(),
+    }
+
+    this.setRecipeIngredients.emit(trimmedRecipeIngredient);
 
   }
 
