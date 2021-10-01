@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
+import { ActivatedRoute } from '@angular/router';
+import { IRecipe } from 'src/app/shared/interfaces/recipe';
 
 @Component({
   selector: 'app-main',
@@ -10,16 +12,35 @@ export class MainComponent implements OnInit {
   fetchedMeals = [];
   shoppingListIngredients: Array<any> = [];
   loggedIn: boolean = false;
+  searchTerm: string = '';
+  searchedRecipes: IRecipe[] = [];
 
-  constructor(private fetchServices: FetchServicesService) {
+  constructor(private fetchServices: FetchServicesService, private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    this.fetchServices.getAll()
-      .then((res: any) => {
-        this.fetchedMeals = res.documents;
-      });
+
+    this.activatedRoute.params.subscribe((params) => {
+      this.searchTerm = params.searchTerm + '*'; // allows for partial search in the DB
+
+      if (params.searchTerm) {
+        this.fetchServices.getAll(undefined, this.searchTerm) // searches all text fields in across the collection
+          .then((res: any) => {
+            const searchTermWithoutWildcard = this.searchTerm.slice(0, this.searchTerm.length - 1)
+            const filteredByName = res.documents.filter((x: any) => x.name.toLowerCase().includes(searchTermWithoutWildcard.toLowerCase()))
+            
+            this.fetchedMeals = filteredByName;
+          });
+      } else {
+        this.fetchServices.getAll()
+          .then((res: any) => {
+            this.fetchedMeals = res.documents;
+          });
+      }
+    })
+
+
 
     localStorage.getItem('user') ? this.loggedIn = true : this.loggedIn = false;
   }

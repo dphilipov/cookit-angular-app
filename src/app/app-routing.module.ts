@@ -36,7 +36,11 @@ const routes: Routes = [
     {
         path: 'update/:id',
         component: UpdateComponent
-    }
+    },
+    {
+        path: 'search/:searchTerm',
+        component: MainComponent
+    },
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);

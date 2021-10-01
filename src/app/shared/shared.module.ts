@@ -9,14 +9,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { IngredientsInputComponent } from './ingredients-input/ingredients-input.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     ButtonComponent,
     CardComponent,
     IngredientsInputComponent,
+    SearchBarComponent,
   ],
   imports: [
     CommonModule,
@@ -26,12 +28,13 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     ButtonComponent,
     CardComponent,
-    IngredientsInputComponent
+    IngredientsInputComponent,
+    SearchBarComponent
   ]
 })
 export class SharedModule { }

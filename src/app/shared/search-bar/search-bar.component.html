@@ -1,0 +1,6 @@
+<form #form="ngForm" (ngSubmit)="searchHandler(form)">
+    <mat-form-field class="search-bar-form" appearance="standard" >
+        <input type="search" name="search" id="search" matInput placeholder="Search a recipe..." class="search-bar" ngModel />
+        <mat-icon class="search-icon" matSuffix>search</mat-icon>
+    </mat-form-field>
+</form>
