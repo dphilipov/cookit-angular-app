@@ -30,6 +30,7 @@
     flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 20px;
+    width: 100%;
     /* [theme.breakponts.down('md')]: {
         columnGap: 10,
         rowGap: 10,
