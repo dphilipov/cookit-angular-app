@@ -7,31 +7,19 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class IngredientsInputComponent {
   @Input() options = [
-    {
-      value: "kg",
-      label: "kg"
-    },
-    {
-      value: "g",
-      label: "g"
-    },
-    {
-      value: "mg",
-      label: "mg"
-    },
-    {
-      value: "l",
-      label: "l"
-    },
-    {
-      value: "ml",
-      label: "ml"
-    },
-    {
-      value: "pcs",
-      label: "pcs"
-    },
+    "kg",
+    "g",
+    "mg",
+    "l",
+    "ml",
+    "pcs",
+    "tsp",
+    "tbsp",
+    "cup",
+    "pinch",
+    "pack"
   ]
+
   @Input() recipeIngredient!: any;
   @Input() dataIndex!: number;
   @Output() setRecipeIngredients: EventEmitter<any> = new EventEmitter();
@@ -41,8 +29,8 @@ export class IngredientsInputComponent {
   }
 
   handleIngredientsChange(ingredientsData: any) {
-       
-    if (ingredientsData.name === 'mealIngredients') {      
+
+    if (ingredientsData.name === 'mealIngredients') {
       this.recipeIngredient.ingredient = ingredientsData.value.trim();
     } else if (ingredientsData.name === 'ingredientsQuantity') {
       this.recipeIngredient.quantity = ingredientsData.value.trim();

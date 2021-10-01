@@ -19,7 +19,7 @@
         <mat-label for="ingredientsMeasurement">Measurement</mat-label>
         <mat-select [(ngModel)]="recipeIngredient.measurement" name="ingredientsMeasurement" #ingredientsMeasurement
             (focus)="handleIngredientsChange(ingredientsMeasurement)" required>
-            <mat-option *ngFor="let option of options" [value]="option.value">{{option.label}}</mat-option>
+            <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
         </mat-select>
     </mat-form-field>
 
