@@ -15,8 +15,3 @@
 .dropzone-container:hover {
     border: 1px dashed #212121;
 }
-
-.dropzone-icon {
-    font-size: 100px;
-    color: #f1f1f1;
-}
