@@ -9,9 +9,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { IngredientsInputComponent } from './ingredients-input/ingredients-input.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { DropzoneComponent } from './dropzone/dropzone.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     CardComponent,
     IngredientsInputComponent,
     SearchBarComponent,
+    DropzoneComponent,
   ],
   imports: [
     CommonModule,
@@ -29,12 +32,14 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     MatInputModule,
     MatSelectModule,
     FormsModule,
+    NgxDropzoneModule
   ],
   exports: [
     ButtonComponent,
     CardComponent,
     IngredientsInputComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DropzoneComponent
   ]
 })
 export class SharedModule { }

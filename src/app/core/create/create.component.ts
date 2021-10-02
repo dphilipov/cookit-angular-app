@@ -22,7 +22,6 @@ export class CreateComponent {
     imageId: '',
     createdBy: '',
   }
-  recipeImage: any;
   recipeIngredientsLength = [
     {
       ingredient: '',
@@ -53,10 +52,8 @@ export class CreateComponent {
     this.recipeIngredientsLength.splice(indexToDelete, 1);
   }
 
-  onSelect(event: any): void {
-    this.recipeImage = event.addedFiles[0];
-    this.files = [];
-    this.files.push(this.recipeImage);
+  setRecipeImage(recipeImage: any): void {
+    this.files = recipeImage;
   }
 
   addIngredientsFieldHandler(event: MouseEvent): void {
@@ -139,7 +136,7 @@ export class CreateComponent {
       return;
     }
 
-    this.fetchServices.uploadImage(this.recipeImage)
+    this.fetchServices.uploadImage(this.files[0])
       .then((uploadRes: any) => {
         this.recipe.imageId = uploadRes.$id;
 

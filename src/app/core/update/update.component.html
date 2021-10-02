@@ -2,11 +2,7 @@
     <h3>UPDATE THIS RECIPE</h3>
 
     <div class="update-container">
-        <ngx-dropzone (change)="onSelect($event)" accept="image/*" [multiple]="false" class="dropzone-container">
-            <ngx-dropzone-label>Drag & drop a recipe image</ngx-dropzone-label>
-            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
-            </ngx-dropzone-image-preview>
-        </ngx-dropzone>
+        <app-dropzone (setRecipeImage)="setRecipeImage($event)"></app-dropzone>
 
         <form #form="ngForm" class="update-form-container" (ngSubmit)="updateRecipeHandler(form)">
 

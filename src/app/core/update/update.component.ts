@@ -20,7 +20,6 @@ export class UpdateComponent implements OnInit {
     imageId: '',
     createdBy: ''
   }
-  recipeImage: any;
   recipeIngredientsLength: Object[] = [];
   recipeIngredients: any = [];
   error!: IError | null;
@@ -52,10 +51,8 @@ export class UpdateComponent implements OnInit {
     this.recipeIngredientsLength.splice(indexToDelete, 1);
   }
 
-  onSelect(event: any): void {
-    this.recipeImage = event.addedFiles[0];
-    this.files = [];
-    this.files.push(this.recipeImage);
+  setRecipeImage(recipeImage: any): void {
+    this.files = recipeImage;
   }
 
   addIngredientsFieldHandler(event: MouseEvent): void {
@@ -134,7 +131,7 @@ export class UpdateComponent implements OnInit {
       this.error = null;
     }
 
-    this.fetchServices.uploadImage(this.recipeImage)
+    this.fetchServices.uploadImage(this.files[0])
       .then((uploadRes: any) => {
         this.recipe.imageId = uploadRes.$id;
         let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');

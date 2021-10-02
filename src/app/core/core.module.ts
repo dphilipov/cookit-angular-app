@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
-import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DetailsComponent } from './details/details.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { UpdateComponent } from './update/update.component';
@@ -40,7 +39,6 @@ import { ProfileComponent } from './profile/profile.component';
     MatInputModule,
     MatIconModule,
     FormsModule,
-    NgxDropzoneModule
   ],
   exports: [
     HeaderComponent,
