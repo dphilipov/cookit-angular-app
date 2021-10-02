@@ -23,6 +23,7 @@ export class IngredientsInputComponent {
   @Input() recipeIngredient!: any;
   @Input() dataIndex!: number;
   @Output() setRecipeIngredients: EventEmitter<any> = new EventEmitter();
+  @Output() deleteRecipeIngredient: EventEmitter<any> = new EventEmitter();
 
   constructor() {
 
@@ -47,6 +48,10 @@ export class IngredientsInputComponent {
 
     this.setRecipeIngredients.emit(trimmedRecipeIngredient);
 
+  }
+
+  handleIngredientDeletion(): void {
+      this.deleteRecipeIngredient.emit(this.dataIndex);
   }
 
 }

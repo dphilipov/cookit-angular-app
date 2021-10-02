@@ -41,8 +41,15 @@
             (focus)="handleIngredientsChange(ingredientsMeasurement)"
             required
         >
-            <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+            <mat-option
+                *ngFor="let option of options"
+                [value]="option"
+            >
+                {{option}}
+            </mat-option>
         </mat-select>
     </mat-form-field>
+
+    <mat-icon class="delete-ingredient-icon" (click)="handleIngredientDeletion()">delete</mat-icon>
 
 </div>

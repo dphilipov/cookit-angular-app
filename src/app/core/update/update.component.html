@@ -17,17 +17,24 @@
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeDescription">Recipe Description</mat-label>
-                <textarea matInput [(ngModel)]="recipe.description" name="recipeDescription" [value]="recipe.description" required></textarea>
+                <textarea matInput [(ngModel)]="recipe.description" name="recipeDescription"
+                    [value]="recipe.description" required></textarea>
                 <mat-hint>Max characters = 150</mat-hint>
             </mat-form-field>
 
-            <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i" [recipeIngredient]="recipeIngredient" (setRecipeIngredients)="setRecipeIngredients($event)"></app-ingredients-input>
+            <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i"
+                [recipeIngredient]="recipeIngredient" (setRecipeIngredients)="setRecipeIngredients($event)"
+                (deleteRecipeIngredient)="deleteRecipeIngredient($event)">
+            </app-ingredients-input>
 
-            <button (click)="addIngredientsFieldHandler($event)" class="add-ingredient">add ingredient</button>
+            <button (click)="addIngredientsFieldHandler($event)" class="add-ingredient">
+                <mat-icon>add</mat-icon>
+            </button>
 
             <mat-form-field appearance="outline">
                 <mat-label for="recipeDirections">Recipe Directions</mat-label>
-                <textarea matInput [(ngModel)]="recipe.directions" name="recipeDirections" [matAutosizeMinRows]="10" [matTextareaAutosize]="true" required>{{recipe.directions}}</textarea>
+                <textarea matInput [(ngModel)]="recipe.directions" name="recipeDirections" [matAutosizeMinRows]="10"
+                    [matTextareaAutosize]="true" required>{{recipe.directions}}</textarea>
             </mat-form-field>
 
             <app-button btnClass="update recipe-btn" btnType="basic" btnText="UPDATE">

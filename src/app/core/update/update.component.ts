@@ -43,9 +43,13 @@ export class UpdateComponent implements OnInit {
   }
 
   setRecipeIngredients(event: IIngredient): void {
-
     const { ingredient, quantity, measurement } = event;
     this.recipeIngredients[event.index] = { ingredient, quantity, measurement };
+  }
+
+  deleteRecipeIngredient(indexToDelete: number): void {
+    this.recipeIngredients.splice(indexToDelete, 1);
+    this.recipeIngredientsLength.splice(indexToDelete, 1);
   }
 
   onSelect(event: any): void {
@@ -67,9 +71,18 @@ export class UpdateComponent implements OnInit {
 
   updateRecipeHandler(form: any): void {
 
-    this.recipe.name = form.form.controls.recipeName.value.trim();    
+    this.recipe.name = form.form.controls.recipeName.value.trim();
     this.recipe.description = form.form.controls.recipeDescription.value.trim();
     this.recipe.directions = form.form.controls.recipeDirections.value.trim();
+
+    if (this.recipeIngredientsLength.length === 0) {      
+      this.error = {
+        type: 'bad',
+        message: 'You must add at least 1 ingredient!'
+      }
+
+      return;
+    }
 
     if (this.recipe.name == '' || this.recipe.description == '' || this.recipe.directions == '') {
       this.error = {
@@ -111,33 +124,32 @@ export class UpdateComponent implements OnInit {
         if (!check) {
           return;
         }
-    }    
+      }
 
-    if (!check) {
-      return;
+      if (!check) {
+        return;
+      }
+
+    } else {
+      this.error = null;
     }
 
-  } else {
-  this.error = null;
-}
+    this.fetchServices.uploadImage(this.recipeImage)
+      .then((uploadRes: any) => {
+        this.recipe.imageId = uploadRes.$id;
+        let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
 
-
-this.fetchServices.uploadImage(this.recipeImage)
-  .then((uploadRes: any) => {
-    this.recipe.imageId = uploadRes.$id;
-    let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
-
-    this.fetchServices.updateOne(recipeId, this.recipe)
-      .then((createRes) => {
-        this.router.navigate(["/"])
+        this.fetchServices.updateOne(recipeId, this.recipe)
+          .then((createRes) => {
+            this.router.navigate(["/"])
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
       });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
   }
 

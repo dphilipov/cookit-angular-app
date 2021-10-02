@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { FetchServicesService } from 'src/app/services/fetch-services.service';
@@ -35,7 +34,7 @@ export class CreateComponent {
     {
       ingredient: '',
       quantity: 0,
-      measurement: ''
+      measurement: '',
     }
   ];
   error!: IError | null;
@@ -44,9 +43,14 @@ export class CreateComponent {
 
   }
 
-  setRecipeIngredients(event: IIngredient): void {
+  setRecipeIngredients(event: IIngredient): void {   
     const { ingredient, quantity, measurement } = event;
     this.recipeIngredients[event.index] = { ingredient, quantity, measurement };
+  }
+
+  deleteRecipeIngredient(indexToDelete: number): void {
+    this.recipeIngredients.splice(indexToDelete, 1);
+    this.recipeIngredientsLength.splice(indexToDelete, 1);
   }
 
   onSelect(event: any): void {
@@ -124,6 +128,15 @@ export class CreateComponent {
 
     } else {
       this.error = null;
+    }
+
+    if (this.recipeIngredientsLength.length === 0) {
+      this.error = {
+        type: 'bad',
+        message: 'You must add at least 1 ingredient!'
+      }
+
+      return;
     }
 
     this.fetchServices.uploadImage(this.recipeImage)

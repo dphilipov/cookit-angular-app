@@ -22,7 +22,7 @@
             </mat-form-field>
 
             <app-ingredients-input *ngFor="let recipeIngredient of recipeIngredientsLength; index as i" [dataIndex]="i"
-                [recipeIngredient]="recipeIngredient" (setRecipeIngredients)="setRecipeIngredients($event)">
+                [recipeIngredient]="recipeIngredient" (setRecipeIngredients)="setRecipeIngredients($event)" (deleteRecipeIngredient)="deleteRecipeIngredient($event)">
             </app-ingredients-input>
 
             <button mat-mini-fab (click)="addIngredientsFieldHandler($event)" class="add-ingredient">
