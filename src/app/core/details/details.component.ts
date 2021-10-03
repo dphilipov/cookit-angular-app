@@ -32,7 +32,7 @@ export class DetailsComponent implements OnInit {
       .then((fetchedRecipe: any) => {                
         this.recipe = fetchedRecipe;        
         this.ingredients = fetchedRecipe.ingredients;
-        this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId);
+        this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId, 100);
         localStorage.getItem('user') == this.recipe.createdBy ? this.owner = true : this.owner = false;
       })
 

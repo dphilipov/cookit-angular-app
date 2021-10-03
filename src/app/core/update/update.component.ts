@@ -20,6 +20,7 @@ export class UpdateComponent implements OnInit {
     imageId: '',
     createdBy: ''
   }
+  imagePreview!: string | null;
   recipeIngredientsLength: Object[] = [];
   recipeIngredients: any = [];
   error!: IError | null;
@@ -33,10 +34,11 @@ export class UpdateComponent implements OnInit {
     this.fetchServices.getOne(recipeId)
       .then((fetchedRecipe: any) => {
         this.recipe = fetchedRecipe;
-        this.recipe.ingredients.forEach((ingredient) => {
-          this.recipeIngredientsLength.push(ingredient);
-        });
+
+        this.recipeIngredientsLength = this.recipe.ingredients;
         this.recipeIngredients = this.recipe.ingredients;
+
+        this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId, 50).href;
       })
 
   }
@@ -53,6 +55,10 @@ export class UpdateComponent implements OnInit {
 
   setRecipeImage(recipeImage: any): void {
     this.files = recipeImage;
+  }
+
+  hideElementHandler() {
+    this.imagePreview = null;
   }
 
   addIngredientsFieldHandler(event: MouseEvent): void {
@@ -72,7 +78,7 @@ export class UpdateComponent implements OnInit {
     this.recipe.description = form.form.controls.recipeDescription.value.trim();
     this.recipe.directions = form.form.controls.recipeDirections.value.trim();
 
-    if (this.recipeIngredientsLength.length === 0) {      
+    if (this.recipeIngredientsLength.length === 0) {
       this.error = {
         type: 'bad',
         message: 'You must add at least 1 ingredient!'
@@ -88,7 +94,7 @@ export class UpdateComponent implements OnInit {
       }
 
       return;
-    } else if (this.files.length == 0) {
+    } else if (this.files.length == 0 && this.imagePreview == null) {
       this.error = {
         type: 'bad',
         message: 'You must upload an image!'
@@ -131,22 +137,35 @@ export class UpdateComponent implements OnInit {
       this.error = null;
     }
 
-    this.fetchServices.uploadImage(this.files[0])
-      .then((uploadRes: any) => {
-        this.recipe.imageId = uploadRes.$id;
-        let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.files.length != 0) {
+      this.fetchServices.uploadImage(this.files[0])
+        .then((uploadRes: any) => {
+          this.recipe.imageId = uploadRes.$id;
+          let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
 
-        this.fetchServices.updateOne(recipeId, this.recipe)
-          .then((createRes) => {
-            this.router.navigate(["/"])
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+          this.fetchServices.updateOne(recipeId, this.recipe)
+            .then((createRes) => {
+              this.router.navigate(["/"])
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (this.imagePreview != null) {
+      let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
+
+      this.fetchServices.updateOne(recipeId, this.recipe)
+        .then((createRes) => {
+          this.router.navigate(["/"])
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
 
   }
 

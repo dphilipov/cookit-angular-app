@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgxDropzoneChangeEvent } from 'ngx-dropzone'
 
 @Component({
   selector: 'app-dropzone',
@@ -6,8 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./dropzone.component.css']
 })
 export class DropzoneComponent {
-  files: File[] = [];
-
+  @Input() files: File[] = [];
   @Output() setRecipeImage: EventEmitter<any> = new EventEmitter();
 
   constructor() { 
@@ -15,13 +15,12 @@ export class DropzoneComponent {
   }
 
 
-  onSelect(event: any): void {
+  onSelect(event: NgxDropzoneChangeEvent): void {
     const recipeImage = event.addedFiles[0];
     this.files = [] // To ensure only one file can be upploaded at a time
-    this.files.push(recipeImage);
-
-    this.setRecipeImage.emit(this.files)
+    this.files.push(recipeImage);    
     
+    this.setRecipeImage.emit(this.files)    
   }
 
 }

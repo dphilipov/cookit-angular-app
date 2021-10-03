@@ -33,7 +33,7 @@ export class FetchServicesService {
     return appwrite.database.updateDocument(COLLECTION_KEY, id, data);
   }
 
-  getImage(imageId: any) {
+  getImage(imageId: string) {
     return appwrite.storage.getFile(imageId);
   }
 
@@ -41,8 +41,8 @@ export class FetchServicesService {
     return appwrite.storage.createFile(data, ['*'], ['*'])
   }
 
-  previewImage(fileId: string) {
-    return appwrite.storage.getFilePreview(fileId);
+  previewImage(fileId: string, quality: number) {
+    return appwrite.storage.getFilePreview(fileId, undefined, undefined, undefined, quality);
   }
 
   deleteOne(id: string) {

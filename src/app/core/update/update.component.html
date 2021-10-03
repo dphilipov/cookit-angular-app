@@ -2,7 +2,12 @@
     <h3>UPDATE THIS RECIPE</h3>
 
     <div class="update-container">
-        <app-dropzone (setRecipeImage)="setRecipeImage($event)"></app-dropzone>
+        <img *ngIf="imagePreview else dropzone" class="recipe-img" [alt]="recipe.name" [src]="imagePreview"
+            (click)="hideElementHandler()" />
+
+        <ng-template #dropzone>
+            <app-dropzone (setRecipeImage)="setRecipeImage($event)" [files]="files"></app-dropzone>
+        </ng-template>
 
         <form #form="ngForm" class="update-form-container" (ngSubmit)="updateRecipeHandler(form)">
 

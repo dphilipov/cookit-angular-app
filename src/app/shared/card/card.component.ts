@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.imagePreview = this.fetchServices.previewImage(this.fetchedMeal.imageId);    
+    this.imagePreview = this.fetchServices.previewImage(this.fetchedMeal.imageId, 50);    
 
     localStorage.getItem('user') ? this.loggedIn = true : this.loggedIn = false;
   }
