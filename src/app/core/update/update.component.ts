@@ -28,14 +28,16 @@ export class UpdateComponent implements OnInit {
 
   constructor(private fetchServices: FetchServicesService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
 
     this.fetchServices.getOne(recipeId)
       .then((fetchedRecipe: any) => {
         this.recipe = fetchedRecipe;
 
-        this.recipeIngredientsLength = this.recipe.ingredients;
+        this.recipe.ingredients.forEach((ingredient) => {
+          this.recipeIngredientsLength.push(ingredient);
+        });
         this.recipeIngredients = this.recipe.ingredients;
 
         this.imagePreview = this.fetchServices.previewImage(fetchedRecipe.imageId, 50).href;
@@ -43,7 +45,7 @@ export class UpdateComponent implements OnInit {
 
   }
 
-  setRecipeIngredients(event: IIngredient): void {
+  setRecipeIngredients(event: IIngredient): void {    
     const { ingredient, quantity, measurement } = event;
     this.recipeIngredients[event.index] = { ingredient, quantity, measurement };
   }
@@ -137,7 +139,7 @@ export class UpdateComponent implements OnInit {
       this.error = null;
     }
 
-    if (this.files.length != 0) {
+    if (this.files.length > 0) { // If there is a new image, upload it first
       this.fetchServices.uploadImage(this.files[0])
         .then((uploadRes: any) => {
           this.recipe.imageId = uploadRes.$id;
@@ -154,7 +156,7 @@ export class UpdateComponent implements OnInit {
         .catch((err) => {
           console.log(err);
         });
-    } else if (this.imagePreview != null) {
+    } else if (this.imagePreview != null) { // If the image was not changed, do not upload anything
       let recipeId: string = <string>this.activatedRoute.snapshot.paramMap.get('id');
 
       this.fetchServices.updateOne(recipeId, this.recipe)
