@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DropzoneComponent } from './dropzone/dropzone.component';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 @NgModule({
   declarations: [
@@ -32,14 +33,16 @@ import { DropzoneComponent } from './dropzone/dropzone.component';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    MatTooltipModule
   ],
   exports: [
     ButtonComponent,
     CardComponent,
     IngredientsInputComponent,
     SearchBarComponent,
-    DropzoneComponent
+    DropzoneComponent,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }
