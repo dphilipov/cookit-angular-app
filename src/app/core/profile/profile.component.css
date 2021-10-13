@@ -18,6 +18,27 @@ p {
     min-height: calc(100vh - 200px);
     margin: 40px auto;
     padding: 0 20px;
+    flex: 10;
+}
+
+.main-wrapper-with-shopping-list {
+    display: flex;
+}
+
+.left-row, .right-row {
+    flex: 1;
+}
+
+.left-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.sticky {
+    align-self: flex-end;
+    position: sticky;
+    top: -80px;
+    margin-top: 40px;
 }
 
 .card-flex-wrapper {

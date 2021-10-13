@@ -15,6 +15,7 @@
     align-self: flex-end;
     position: sticky;
     top: -80px;
+    margin-top: 95px;
 }
 
 .main-wrapper {
@@ -46,8 +47,4 @@
 
 .card-container {
     width: 23%;
-}
-
-.test {
-    align-self: flex-end;
 }
