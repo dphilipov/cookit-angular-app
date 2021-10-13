@@ -1,6 +1,7 @@
 <h3>Hello {{userEmail}}</h3>
 <p *ngIf="fetchedMeals.length==1">You have {{fetchedMeals.length}} recipe</p>
 <p *ngIf="fetchedMeals.length!=1">You have {{fetchedMeals.length}} recipes</p>
+
 <div class="main-wrapper-with-shopping-list">
     <div class="left-row">
         <app-shopping-list *ngIf="shoppingListIngredients.length > 0"
