@@ -11,6 +11,10 @@
     Create & browse delicious cooking recipes and generate a shopping list with ingredients!
     <br />
     <br />
+    <img width ='36px' src ='https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/angularjs.svg'>
+    <img width ='200px' src ='https://appwrite.io/images/appwrite.svg'>
+    <img width ='210' src ='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.edureka.co%2Fblog%2Fwp-content%2Fuploads%2F2020%2F02%2Fangular-material-logo.jpg&f=1&nofb=1'>
+    <br />
     <a href="https://www.cookitapp.org">Live Demo</a>
     ·
     <a href="https://github.com/dphilipov?tab=repositories">Explore my other projects</a>
