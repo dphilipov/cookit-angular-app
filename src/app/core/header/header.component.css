@@ -28,7 +28,6 @@
     list-style-type: none;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     justify-content: right;
-    margin-bottom: 0;
 }
 
 .main-search {
@@ -66,5 +65,8 @@
     color: #EAE2C2;
     font-weight: 200;
     align-self: flex-end;
-    padding-right: 16px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-align: right;
 }
