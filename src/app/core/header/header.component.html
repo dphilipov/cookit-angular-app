@@ -12,11 +12,19 @@
 
             <div class="nav-container">
                 <ul>
-                    <a routerLink="/login" ><app-button *ngIf="!user" btnClass="nav-btn" btnType="basic" btnText="LOGIN"></app-button></a>
-                    <app-button *ngIf="user" (click)="handleLogout()" btnClass="nav-btn" btnType="basic" btnText="SIGN OUT"></app-button>
-                    <a routerLink="/register"><app-button *ngIf="!user" btnClass="nav-btn" btnType="basic" btnText="REGISTER"></app-button></a>
-                    <a routerLink="/profile" *ngIf="user"><app-button btnClass="nav-btn" btnType="basic" btnText="MY RECIPES"></app-button></a>
+                    <a routerLink="/login">
+                        <app-button *ngIf="!user" btnClass="nav-btn" btnType="basic" btnText="LOGIN"></app-button>
+                    </a>
+                    <app-button *ngIf="user" (click)="handleLogout()" btnClass="nav-btn" btnType="basic"
+                        btnText="SIGN OUT"></app-button>
+                    <a routerLink="/register">
+                        <app-button *ngIf="!user" btnClass="nav-btn" btnType="basic" btnText="REGISTER"></app-button>
+                    </a>
+                    <a routerLink="/profile" *ngIf="user">
+                        <app-button btnClass="nav-btn" btnType="basic" btnText="MY RECIPES"></app-button>
+                    </a>
                 </ul>
+                <span class="demo-credentials">Demo credentials: test@test.bg</span>
             </div>
         </div>
     </div>

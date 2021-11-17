@@ -19,6 +19,8 @@
     font-size: 25px;
     font-weight: bold;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav-container ul {
@@ -26,6 +28,7 @@
     list-style-type: none;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     justify-content: right;
+    margin-bottom: 0;
 }
 
 .main-search {
@@ -56,4 +59,12 @@
 
 .search-bar-container {
     width: 100%;
+}
+
+.demo-credentials {
+    font-size: 14px;
+    color: #EAE2C2;
+    font-weight: 200;
+    align-self: flex-end;
+    padding-right: 16px;
 }
