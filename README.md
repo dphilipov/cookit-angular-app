@@ -68,7 +68,6 @@ The website uses Appwrite (a self-hosted Firebase alternative) for Authenticatio
 
 Architecturally, modules are split into *core* & *shared* with different folders for each components. Services related to **Authentication** and **Fetching data** are kept separate and imported when necessary.
 
-![Structure Screen Shot][sctructure-screenshot]
 
 ## Built With
 
@@ -111,7 +110,7 @@ To start the project, you first need to install Angular CLI
 
 ### [View the Live Demo](https://www.cookitapp.org)
 
-**Register** a new account & **Login**. This allows you to **Create** new recipes and to add recipe ingredients to a **Shopping List**. The **Shopping List** persists while navigating the website and detects automatically if you are adding an already existing ingredient. In such cases, the **Shopping List** combines the quantities under one entry. Furthermore, you can **Edit** & **Delete** the recipes you have created. In your **Profile** page you can view all of your created recipes and **Delete** your account if needed.
+**Register** a new account or **Login** with the demo credentials. This allows you to **Create** new recipes and to add recipe ingredients to a **Shopping List**. The **Shopping List** persists while navigating the website and detects automatically if you are adding an already existing ingredient. In such cases, the **Shopping List** combines the quantities under one entry. Furthermore, you can **Edit** & **Delete** the recipes you have created. In your **Profile** page you can view all of your created recipes and **Delete** your account if needed.
 
 ![Shopping List Preview][shopping-list-preview]
 
